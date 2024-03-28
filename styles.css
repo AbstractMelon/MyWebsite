@@ -16,12 +16,14 @@
   .header {
     background-image: url('./header.png');  
     background-size: cover;
-    background-position: top;
-    padding: 100px 0; /* Adjust as needed */
+    background-position: center;
+    padding: 0px 0; /* Adjust as needed */
     text-align: bottom;
-    color: #000000;
-    font-size: 6vmin;
+    color: #ffffff;
+    font-size: 7vmin;
     font-family: 'ArchRival', sans-serif;
+    -webkit-text-stroke: 6px rgb(0, 0, 0);
+    text-stroke: 6px rgb(0, 0, 0);
   }
   .container {
     max-width: 800px;
@@ -93,9 +95,3 @@
     width: 100%;
     height: 100%;
   }
-   .notofficial {
-    background-color: #0095ff; /* Background color */
-    color: #ffffff; /* Text color */
-    padding: 0.012px; /* Padding around the text */
-    text-align: center; /* Center the text */
-}
