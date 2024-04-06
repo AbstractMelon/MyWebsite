@@ -78,7 +78,7 @@
             top: -100%;
             left: -100%;
             background-image: url('https://img.freepik.com/premium-vector/watermelon-with-black-seeds-seamless-pattern-red-abstract-sweet-background-vector-illustration_342166-336.jpg'); /* Watermelon grid image */
-            animation: animateBackground 100s linear infinite; /* Adjust animation duration as needed */
+            animation: animateBackground 140s linear infinite; /* Adjust animation duration as needed */
         }
 
         @keyframes animateBackground {
@@ -140,8 +140,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var titles = document.querySelectorAll('h1, h2, h3');
-            var paragraphs = document.querySelectorAll('p');
+            var container = document.querySelector('body');
+            var elementsToFade = container.querySelectorAll('*');
 
             function isVisible(element) {
                 var rect = element.getBoundingClientRect();
@@ -156,20 +156,20 @@
             function fadeIn(elements) {
                 elements.forEach(function(element) {
                     if (isVisible(element)) {
+                        element.style.transition = "opacity 3s"; // Adjust the duration here (e.g., 1.5s for 1.5 seconds)
                         element.style.opacity = 1;
                     }
                 });
             }
 
             window.addEventListener('scroll', function() {
-                fadeIn(titles);
-                fadeIn(paragraphs);
+                fadeIn(elementsToFade);
             });
 
             // Initial check
-            fadeIn(titles);
-            fadeIn(paragraphs);
+            fadeIn(elementsToFade);
         });
+
     </script>
 </body>
 </html>
