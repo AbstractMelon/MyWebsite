@@ -1,22 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abstract Melon!</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Melon - Personal Webpage</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #333; /* slightly lighter */
+            color: #ddd;
+            margin: 0; /* Remove default margin */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            position: relative; /* Needed for the background animation */
+        }
+
+
+        .container {
+            width: 50%;
+            height: 145vh; /* Set height to 100% of viewport height */
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.7); /* slightly lighter */
+        }
+
+
+        h1, h2 {
+            color: #00ffff;
+            border-bottom: 2px solid #00ffff;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .project-box {
+            padding: 15px;
+            border: 2px solid #00ffff;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.5); /* slightly lighter */
+            transition: transform 0.3s ease-in-out, opacity 0.5s ease;
+        }
+
+        .project-box:hover {
+            transform: scale(1.05);
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Put it behind other content */
+            overflow: hidden; /* Hide overflowing elements */
+        }
+
+        .watermelon-grid {
+            position: absolute;
+            width: 500%;
+            height: 500%;
+            top: -100%;
+            left: -100%;
+            background-image: url('https://img.freepik.com/premium-vector/watermelon-with-black-seeds-seamless-pattern-red-abstract-sweet-background-vector-illustration_342166-336.jpg'); /* Watermelon grid image */
+            animation: animateBackground 100s linear infinite; /* Adjust animation duration as needed */
+        }
+
+        @keyframes animateBackground {
+            from {
+                transform: translateX(0) translateY(0);
+            }
+            to {
+                transform: translateX(-50%) translateY(-50%);
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <div class="header">
-        <h1>Abstract Melon!</h1>
+    <div class="background-animation">
+        <div class="watermelon-grid"></div>
     </div>
-    <div class="Center">
-        <h1>Hi, My name is melon!</h1>
-        <h2 style="text-align: center;">I'm a 12 year old kid from the United States</h2>
-        <h3 style="text-align: center;">I'm a crap programmer that enjoys everything tech and has way too much free time</h3>
-        
+
+    <div class="container">
+        <header>
+            <h1>Abstract Melon</h1>
+            <p>Welcome to my personal webpage!</p>
+        </header>
+        <section>
+            <h2>About Me</h2>
+            <p>I'm Melon, and I'm passionate about coding and technology. I enjoy working on various projects and exploring new things!</p>
+            <p>This webpage serves as a showcase of my interests, projects, and experience of technology.</p>
+        </section>
+        <section class="projects">
+            <h2>Projects</h2>
+            <div class="project-box">
+                <h3>Bopl Mods</h3>
+                <p>Varius mods for the game <a>Bopl Battle</a> by <a>Zapray Games</a></p>
+            </div>
+            <div class="project-box">
+                <h3>Match Maker Bot</h3>
+                <p>A discord bot that alows you to set up match making for any game!</p>
+            </div>
+            <div class="project-box">
+                <h3>Warehouse INC</h3>
+                <p>A game developed with some friends that is a cookie clicker clone!</p>
+            </div>
+            <div class="project-box">
+                <h3>Forkium</h3>
+                <p>A more automated version of thorium, a space simulation software!</p>
+            </div>
+            <div class="project-box">
+                <h3>and many more!</h3>
+                <p>You can see a list of all of my project <a>Here!</a></p>
+            </div>
+        </section>
+        <section>
+            <h2>Contact Me</h2>
+            <p>If you'd like to get in touch with me, feel free to reach out via email at <a href="mailto:abstractmelons@gmail.com">abstractmelons@gmail.com</a>.</p>
+        </section>
+        <div class="footer">
+            <p>Designed by Melon | &copy; 2024</p>
+        </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var titles = document.querySelectorAll('h1, h2, h3');
+            var paragraphs = document.querySelectorAll('p');
+
+            function isVisible(element) {
+                var rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+
+            function fadeIn(elements) {
+                elements.forEach(function(element) {
+                    if (isVisible(element)) {
+                        element.style.opacity = 1;
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', function() {
+                fadeIn(titles);
+                fadeIn(paragraphs);
+            });
+
+            // Initial check
+            fadeIn(titles);
+            fadeIn(paragraphs);
+        });
+    </script>
 </body>
 </html>
