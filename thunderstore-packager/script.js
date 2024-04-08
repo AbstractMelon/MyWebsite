@@ -42,13 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
             ctx.drawImage(img, 0, 0, 256, 256);
             canvas.toBlob(function (blob) {
                 zip.file("icon.png", blob);
-                // Add other files if needed
                 addFilesToZip(zip, dllFile);
             });
         };
         img.src = URL.createObjectURL(pngFile);
 
-        // Function to add other files to the zip
+        // add other files to the zip
         function addFilesToZip(zip, file) {
             if (file) {
                 zip.file(file.name, file);
@@ -60,10 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     const url = window.URL.createObjectURL(blob);
                     const link = document.createElement("a");
                     link.href = url;
-                    link.download = "packaged_files.zip"; // Set the default download filename
+                    link.download = "package.zip"; 
                     document.body.appendChild(link);
 
-                    // Trigger the click event on the download link
+                    // click on the download link
                     link.click();
 
                     // Clean up
