@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "website_url": "https://github.com/thunderstore-io",
         "description": "This is a description for a mod. 250 characters max",
         "dependencies": [
+            "BepInEx-BepInExPack-5.4.2100"
         ]
     }`;
     
