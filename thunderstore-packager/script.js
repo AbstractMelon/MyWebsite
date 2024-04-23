@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         "website_url": "https://github.com/thunderstore-io",
         "description": "This is a description for a mod. 250 characters max",
         "dependencies": [
-            ""
         ]
     }`;
     
@@ -25,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const zip = new JSZip();
 
         // Add readme and manifest.json to the zip
-        zip.file("readme.txt", readmeContent);
+        zip.file("README.md", readmeContent);
         zip.file("manifest.json", manifestContent);
 
         // Add the .dll and .png files
