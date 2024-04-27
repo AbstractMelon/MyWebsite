@@ -11,23 +11,40 @@
         <h1>Thunderstore Packager</h1>
         
         <form id="uploadForm" enctype="multipart/form-data">
-            <div>
+            <div class="form-group">
                 <label for="dllFile">Upload .dll file:</label>
                 <input type="file" id="dllFile" name="dllFile" accept=".dll">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="pngFile">Upload .png file:</label>
                 <input type="file" id="pngFile" name="pngFile" accept=".png">
             </div>
         </form>
 
+        <br>
+        
+        <h2>Edit Info</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Epic Mod">
+        </div>
+        <div class="form-group">
+            <label for="version">Version:</label>
+            <input type="text" id="version" name="version" placeholder="1.0.0">
+        </div>
+        <div class="form-group">
+            <label for="website">Website URL:</label>
+            <input type="text" id="website" name="website" placeholder="https://github.com/yourname/reponame/">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" rows="5" cols="50" placeholder="Type your description here..."></textarea>
+        </div>
+
         <h2>Edit Readme</h2>
         <textarea id="readme" rows="10" cols="50" placeholder="Type your readme here..."></textarea>
 
-        <h2>Edit manifest.json</h2>
-        <textarea id="manifest" rows="10" cols="50" placeholder="Type your manifest.json here..."></textarea>
-
-        <button id="packageBtn">Package your file</button>
+        <button id="packageBtn">Package Your File</button>
     </div>
 
     <script src="script.js"></script>

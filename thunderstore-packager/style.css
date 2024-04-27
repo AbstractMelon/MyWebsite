@@ -1,58 +1,52 @@
 body {
     font-family: Arial, sans-serif;
-    background: rgb(27,27,27);
-    background: linear-gradient(36deg, rgba(27,27,27,1) 0%, rgba(75,75,75,1) 100%);
+    background: linear-gradient(36deg, #1b1b1b 0%, #4b4b4b 100%);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 140vh;
+    min-height: 180vh;
 }
 
 .container {
-    width: 70%;
+    width: 100%;
     max-width: 600px;
     padding: 20px;
-    background-color: #444;
+    background-color: #333;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
     color: #fff;
 }
 
-h2 {
-    color: rgb(255, 255, 255);
-}
-form {
+h1, h2 {
+    text-align: center;
     margin-bottom: 20px;
 }
 
-form div {
-    margin-bottom: 10px;
+.form-group {
+    margin-bottom: 20px;
 }
 
 label {
+    display: block;
     font-weight: bold;
-    color: #fff;
+    margin-bottom: 5px;
 }
 
 input[type="file"],
+input[type="text"],
 textarea {
-    width: calc(100% - 20px);
-    padding: 8px;
-    background-color: #666;
-    border: 1px solid #555;
+    width: 100%;
+    padding: 10px;
+    background-color: #555;
+    border: 1px solid #444;
     border-radius: 4px;
     color: #fff;
 }
 
 button {
-    width: calc(100% - 20px); 
+    width: 100%; 
     padding: 10px;
     background-color: #007bff;
     color: #fff;
@@ -70,26 +64,20 @@ button:active {
     background-color: #004280;
 }
 
-/* WEBKIT */
-
+/* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 10px; 
-    background-color: #333; /
+    background-color: #333;
 }
 
-/* Scrollbar Thumb */
 ::-webkit-scrollbar-thumb {
     background-color: #555; 
     border-radius: 5px; 
 }
 
-
 ::-webkit-scrollbar-thumb:hover {
     background-color: #777; 
 }
-
-
-/* MOZZILA */
 
 * {
     scrollbar-width: thin; 
@@ -101,7 +89,6 @@ button:active {
     border-radius: 5px; 
 }
 
-/* Handle on hover */
 *::-moz-scrollbar-thumb:hover {
     background-color: #777; 
 }
