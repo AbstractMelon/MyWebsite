@@ -1,0 +1,78 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+iframe {
+  width: 100vw;
+  height: 50vh;
+}
+
+* {
+  margin: 0;
+  font-family: "Comic Sans MS", "Comic Sans", Arial;
+  font-size: 3vmin;
+
+}
+
+body {
+  background-color: #d4d4d4;
+}
+
+#search {
+  all: unset;
+  display: block;
+  margin: auto;
+  margin-top: 1vh;
+  padding: 2vmin;
+  border-radius: 8vmin;
+  border: black solid 0.3vmin;
+
+}
+
+.count {
+  width: 100vw;
+  text-align: center;
+}
+
+#games {
+  width: 90vw;
+  background-color: gray;
+  padding-top: 5vmin;
+  border-radius: 5vmin 5vmin 0 0;
+  padding-right: 5vw;
+  padding-left: 5vw;
+  padding-bottom: 5vmin;
+}
+
+h1 {
+  font-size: 10vmin;
+  text-align: center;
+  width: 100%;
+}
+
+button {
+  all: unset;
+  background-color: #0000FF;
+  margin: 0.5vmin;
+  margin-bottom: 1.5vh;
+  color: white;
+  font-weight: bold;
+  padding: 0.5vmin;
+  border-radius: 1vmin;
+
+  box-shadow: #000099 0vw 1vh;
+  user-select: none;
+
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(150%);
+}
+
+button:active {
+  box-shadow: #000099 0vw 0vh;
+  transform: translateY(1vh);
+}
