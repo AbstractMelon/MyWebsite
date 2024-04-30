@@ -9,21 +9,7 @@
 <body>
     <div class="container">
         <h1>Thunderstore Packager</h1>
-        
-        <form id="uploadForm" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="dllFile">Upload .dll file:</label>
-                <input type="file" id="dllFile" name="dllFile" accept=".dll">
-            </div>
-            <div class="form-group">
-                <label for="pngFile">Upload .png file:</label>
-                <input type="file" id="pngFile" name="pngFile" accept=".png">
-            </div>
-        </form>
 
-        <br>
-        
-        <h2>Edit Info</h2>
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Epic Mod">
@@ -41,8 +27,23 @@
             <textarea id="description" rows="5" cols="50" placeholder="Type your description here..."></textarea>
         </div>
 
-        <h2>Edit Readme</h2>
+        <br>
+
+        <h2>Edit README.md</h2>
         <textarea id="readme" rows="10" cols="50" placeholder="Type your readme here..."></textarea>
+
+        <br><br><br>
+
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="dllFile">Upload .dll file:</label>
+                <input type="file" id="dllFile" name="dllFile" accept=".dll">
+            </div>
+            <div class="form-group">
+                <label for="pngFile">Upload .png file:</label>
+                <input type="file" id="pngFile" name="pngFile" accept=".png">
+            </div>
+        </form>
 
         <button id="packageBtn">Package Your File</button>
     </div>
