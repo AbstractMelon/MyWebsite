@@ -7,6 +7,7 @@ packageBtn.addEventListener("click", function () {
     const version = document.getElementById("version").value;
     const website = document.getElementById("website").value;
     const description = document.getElementById("description").value;
+    const dependencies = document.getElementById("dependencies").value.split(",").map(dep => dep.trim());
 
     // Construct manifest object
     const manifest = {
@@ -14,9 +15,7 @@ packageBtn.addEventListener("click", function () {
         "version_number": version,
         "website_url": website,
         "description": description,
-        "dependencies": [
-            "BepInEx-BepInExPack-5.4.2100"
-        ]
+        "dependencies": "BepInEx-BepInExPack-5.4.2100", dependencies
     };
 
     // Convert manifest object to JSON string
@@ -71,4 +70,37 @@ packageBtn.addEventListener("click", function () {
                 window.URL.revokeObjectURL(url);
             });
     }
+});
+
+
+
+// Add event listener for import button click
+document.getElementById("importBtn").addEventListener("click", function () {
+    // Get the selected .zip file
+    const importFile = document.getElementById("importFile").files[0];
+
+    // Create a new JSZip instance
+    const zip = new JSZip();
+
+    // Read the imported .zip file
+    zip.loadAsync(importFile).then(function (zipContents) {
+        // Extract the manifest.json and README.md files
+        const manifestContent = zipContents.file("manifest.json").async("string");
+        const readmeContent = zipContents.file("README.md").async("string");
+
+        // Once both files are read, continue processing
+        Promise.all([manifestContent, readmeContent]).then(function (values) {
+            const [manifestContent, readmeContent] = values;
+
+            // Parse manifest.json content
+            const manifest = JSON.parse(manifestContent);
+
+            // Populate form fields with imported data
+            document.getElementById("name").value = manifest.name || "";
+            document.getElementById("version").value = manifest.version_number || "";
+            document.getElementById("website").value = manifest.website_url || "";
+            document.getElementById("description").value = manifest.description || "";
+            document.getElementById("readme").value = readmeContent || "";
+        });
+    });
 });

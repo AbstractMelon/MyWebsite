@@ -34,6 +34,13 @@
 
         <br><br><br>
 
+        <div class="form-group">
+            <label for="dependencies">Dependencies:</label>
+            <input type="text" id="dependencies" name="dependencies" placeholder="Enter dependencies separated by commas">
+        </div>
+        
+        <br>
+
         <form id="uploadForm" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="dllFile">Upload .dll file:</label>
@@ -44,6 +51,15 @@
                 <input type="file" id="pngFile" name="pngFile" accept=".png">
             </div>
         </form>
+
+        
+
+        <br>
+
+        <input type="file" id="importFile" accept=".zip">
+        <button id="importBtn">Import .zip</button>
+
+        <br><br><br>
 
         <button id="packageBtn">Package Your File</button>
     </div>
