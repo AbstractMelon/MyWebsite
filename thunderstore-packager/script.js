@@ -15,7 +15,7 @@ packageBtn.addEventListener("click", function () {
         "version_number": version,
         "website_url": website,
         "description": description,
-        "dependencies": "BepInEx-BepInExPack-5.4.2100", dependencies
+        "dependencies": dependencies
     };
 
     // Convert manifest object to JSON string
