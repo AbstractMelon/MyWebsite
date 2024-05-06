@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "http-rails": "^0.53.5",
     "http-server": "^14.1.1",
     "https-server": "^0.1.2",
     "nodemon": "^3.1.0"
