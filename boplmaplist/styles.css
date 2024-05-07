@@ -1,7 +1,7 @@
 body {
-    background: rgb(2,0,36);
-    background: linear-gradient(59deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); 
-    font-family: Arial, sans-serif;
+    background: rgb(63,94,251);
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    font-family: "Comic Sans", sans-serif;
 }
 
 h1 {
@@ -13,8 +13,8 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
-    background: rgb(2,0,36);
-    background: linear-gradient(59deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); 
+    background: rgb(63,94,251);
+    background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
     padding: 0px; 
 }
 
