@@ -4,107 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abstractmelon</title>
-    <meta name="description" content="Welcome to my personal webpage. Mess around with whatever I do, its probably somewhere on this page.">
+    <meta name="description" content="Welcome to my personal webpage. Mess around with whatever I do, it's probably somewhere on this page.">
     <meta name="keywords" content="Abstract Melon, personal webpage, interests, projects, thoughts, programming, tech, chaos, fun, mess">
     <meta name="author" content="Abstract Melon">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/png" href="favicon.png">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #333; 
-            color: #ddd;
-            margin: 0; 
-            overflow-x: hidden; 
-            position: relative; /* Needed for the background animation */
-        }
-
-
-        .container {
-            width: 50%;
-            height: 145vh; 
-            margin: 0 auto;
-            padding: 20px;
-            border: 2px solid #00ffff;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.7); 
-        }
-
-
-        h1, h2 {
-            color: #00ffff;
-            border-bottom: 2px solid #00ffff;
-            padding-bottom: 5px;
-            margin-bottom: 20px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .project-box {
-            padding: 15px;
-            border: 2px solid #00ffff;
-            border-radius: 10px;
-            background-color: rgba(0, 0, 0, 0.5); 
-            transition: transform 0.3s ease-in-out, opacity 0.5s ease;
-        }
-
-        .project-box:hover {
-            transform: scale(1.05);
-        }
-
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; 
-            overflow: hidden; 
-        }
-
-        .watermelon-grid {
-            position: absolute;
-            width: 500%;
-            height: 500%;
-            top: -100%;
-            left: -100%;
-            background-image: url('https://img.freepik.com/premium-vector/watermelon-with-black-seeds-seamless-pattern-red-abstract-sweet-background-vector-illustration_342166-336.jpg'); /* Watermelon grid image */
-            animation: animateBackground 140s linear infinite; 
-        }
-
-        @keyframes animateBackground {
-            from {
-                transform: translateX(0) translateY(0);
-            }
-            to {
-                transform: translateX(-50%) translateY(-50%);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8NXB4L1TV7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8NXB4L1TV7');
-</script>
 
 <body>
     <div class="background-animation">
@@ -113,37 +19,38 @@
 
     <div class="container">
         <header>
-            <h1>Abstract Melon</h1>
-            <p>Welcome to my personal webpage!</p>
+            <h1>Hi, im melon!</h1>
         </header>
         <section>
             <h2>About Me</h2>
             <p>I'm Melon, and I'm passionate about coding and technology. I enjoy working on various projects and exploring new things!</p>
             <p>This webpage serves as a showcase of my interests, projects, and experience of technology.</p>
         </section>
+        <h2></h2>
         <section class="projects">
             <h2>Projects</h2>
-            <div class="project-box">
+            <div class="project-box" onclick="handleProjectClick('Bopl Mods', 'https://github.com/AbstractMelon/BoplBattleMods/')">
                 <h3>Bopl Mods</h3>
                 <p>Varius mods for the game <a>Bopl Battle</a> by <a>Zapray Games</a></p>
             </div>
-            <div class="project-box">
+            <div class="project-box" onclick="handleProjectClick('Match Maker Bot', 'https://abtsractmelon.net/match-maker-bot')">
                 <h3>Match Maker Bot</h3>
-                <p>A discord bot that alows you to set up match making for any game!</p>
+                <p>A discord bot that allows you to set up match making for any game!</p>
             </div>
-            <div class="project-box">
+            <div class="project-box" onclick="handleProjectClick('Warehouse INC', 'https://warehouse-inc.vercel.app')">
                 <h3>Warehouse INC</h3>
                 <p>A game developed with some friends that is a cookie clicker clone!</p>
             </div>
-            <div class="project-box">
+            <div class="project-box" onclick="handleProjectClick('Forkium', 'https://abstractmelon.net/forkium')">
                 <h3>Forkium</h3>
                 <p>A more automated version of thorium, a space simulation software!</p>
             </div>
-            <div class="project-box">
-                <h3>Any many more!</h3>
-                <p>You can see a list of all of my project <a>Here!</a></p>
+            <div class="project-box" onclick="handleProjectClick('Many More', 'https://abstractmelon.net/projects')">
+                <h3>And many more!</h3>
+                <p>You can see a list of all of my projects by clicking this box!</p>
             </div>
         </section>
+        
         <section>
             <h2>Contact Me</h2>
             <p>If you'd like to get in touch with me, feel free to reach out via email at <a href="mailto:abstractmelons@gmail.com">abstractmelons@gmail.com</a>.</p>
@@ -155,7 +62,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            var container = document.querySelector('body');
+            var container = document.querySelector('.container');
             var elementsToFade = container.querySelectorAll('*');
 
             function isVisible(element) {
@@ -184,6 +91,15 @@
             // Initial check
             fadeIn(elementsToFade);
         });
+
+        function handleProjectClick(projectName, projectLink) {
+            window.open(projectLink, '_blank');
+            event.target.classList.add('clicked');
+            setTimeout(() => {
+                event.target.classList.remove('clicked');
+            }, 500); 
+        }
+
 
     </script>
 </body>

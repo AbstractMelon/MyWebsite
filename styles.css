@@ -1,87 +1,122 @@
 @font-face {
     font-family: 'ArchRival';
-    src: url('./SF\ Arch\ Rival\ Bold.ttf') format('truetype'), /* Modern Browsers */
-        url('./SF\ Arch\ Rival\ Bold.ttf') format('truetype'); /* Modern Browsers */
+    src: url('./SF\ Arch\ Rival\ Bold.ttf') format('truetype'),
+        url('./SF\ Arch\ Rival\ Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
   body {
-    font-family: "Comic Sans MS", "Comic Sans", sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #393939;
-    color: #ffffff;
-    font-size: 2.2vmin;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(35deg, rgba(56,110,111,1) 0%, rgba(36,36,36,1) 100%);
-  }
-  .header {
-    background-image: url('./header.png');  
-    background-size: cover;
-    background-position: center;
-    padding: 5px 0; /* Adjust as needed */
-    text-align: bottom;
-    color: #ffffff;
-    font-size: 7vmin;
     font-family: 'ArchRival', sans-serif;
-    -webkit-text-stroke: 6px rgb(0, 0, 0);
-    border-radius: 3%;
-  }
-  .container {
+    background-color: #333; 
+    color: #ddd;
+    margin: 0; 
+    overflow-x: hidden; 
+    position: relative; 
+}
+
+.container {
+    width: 90%;
     max-width: 800px;
-    margin: 10px auto;
+    margin: 50px auto;
     padding: 20px;
-    background-color: #494949;
-    border-radius: 10spx;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 25px;
-  }
-  h1 {
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
+h1 {
+    color: #00ffff;
     text-align: center;
-  }
-  .logo {
-    display: block;
-    margin: 20px auto;
-    width: 200px;
-  }
-  .btn {
-    display: block;
-    width: 200px;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  .btn:hover {
-    background-color: #0056b3;
-  }
-  .game {
-    margin: auto;
-    width: 95%;
-    padding: 10px;
-    text-align: center;
-    border: 3px solid #333;
-  }
-  a {
-    color: #00b3ff;
-  }
-  .head {
-    font-size: 0vmax;
-    padding: 0;
-    text-align: center;
-  }
-  .center {
-    text-align: center;
-    align-content: center;
-  }
-  .outline {
-    margin: auto;
-    width: 95%;
-    padding: 10px;
-    text-align: center;
-    border: 3px solid #000000;
-  }
+    font-size: 10vmin;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+h2 {
+    color: #00ffff;
+    border-bottom: 2px solid #00ffff;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.project-box {
+    padding: 15px;
+    border: 2px solid #00ffff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out, opacity 0.5s ease;
+    cursor: pointer; 
+}
+
+.project-box:hover {
+    transform: scale(1.05);
+}
+
+.project-box.clicked {
+    animation: clickEffect 0.5s;
+}
+
+@keyframes clickEffect {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.background-animation {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.watermelon-grid {
+    position: absolute;
+    width: 400vh; 
+    height: 400vh; 
+    top: 0; 
+    left: 0; 
+    background-image: url('https://img.freepik.com/premium-vector/watermelon-with-black-seeds-seamless-pattern-red-abstract-sweet-background-vector-illustration_342166-336.jpg'); /* Watermelon grid image */
+    animation: animateBackground 140s linear infinite;
+}
+@keyframes animateBackground {
+    from {
+        transform: translateX(0) translateY(0);
+    }
+    to {
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        padding: 10px;
+    }
+}
