@@ -104,3 +104,22 @@ document.getElementById("importBtn").addEventListener("click", function () {
         });
     });
 });
+
+
+
+
+//add common dependencies
+document.getElementById("addCommonDependency").onclick=()=>{
+    const depEl = document.getElementById("dependencies")
+    let stringVal = document.getElementById("comDepSelect").value
+
+    if(/^\s*$/.test(depEl.value)){
+        depEl.value = stringVal
+        return
+    }
+    if(depEl.value.endsWith(",")){
+        depEl.value+=stringVal
+        return
+    }
+    depEl.value+= ","+stringVal
+}
