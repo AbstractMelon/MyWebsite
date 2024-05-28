@@ -50,6 +50,15 @@
             <label for="dependencies">Dependencies:</label>
             <input type="text" id="dependencies" name="dependencies" placeholder="Enter dependencies separated by commas">
         </div>
+        <div class="form-group">
+            <label>Add Common Dependencies:</label>
+            <select id="comDepSelect">
+                <option value="BepInEx-BepInExPack-5.4.2100">BepInEx Pack</option>
+                <option value="AbstractMelon-AntiMatchmaking-1.0.1">AntiMatchmaking</option>
+                <option value="FiberLib-FiberLib-1.1.2">FiberLib</option>
+            </select>
+            <button id="addCommonDependency">Add Dependency</button>
+        </div>
         
         <br>
 
@@ -76,9 +85,13 @@
         <button id="packageBtn">Package Your File</button>
     </div>
 
-    <script src="script.js"></script>
+
     
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js" integrity="sha512-Ww1y9OuQ2kehgVWSD/3nhgfrb424O3802QYP/A5gPXoM4+rRjiKrjHdGxQKrMGQykmsJ/86oGdHszfcVgUr4hA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
 
+    <script src="script.js"></script>
+    
 </body>
 </html>
