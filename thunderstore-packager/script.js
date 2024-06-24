@@ -121,5 +121,5 @@ document.getElementById("addCommonDependency").onclick=()=>{
         depEl.value+=stringVal
         return
     }
-    depEl.value+= ","+stringVal
+    depEl.value+= ", "+stringVal
 }
