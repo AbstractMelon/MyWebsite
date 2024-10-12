@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Important Notice</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4d4d;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .container {
+            background-color: #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            max-width: 800px;
+        }
+        .ip-address {
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Important Notice</h1>
+        <p>To whom it may concern:</p>
+        <p>Your actions are illegal and unethical. We are monitoring your activities.</p>
+        <p>Your IP Address: <span class="ip-address" id="ip-address">Loading...</span></p>
+        <p>We advise you to cease any fraudulent activities immediately.</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Altaris. All rights reserved.</p>
+    </div>
+
+    <script>
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-address').textContent = data.ip;
+            })
+            .catch(error => {
+                document.getElementById('ip-address').textContent = 'Unable to retrieve IP';
+                console.error('Error fetching IP address:', error);
+            });
+    </script>
+</body>
+</html>
