@@ -1,9 +1,9 @@
 module.exports = {
-    apps: [
-        {
-            name: "website",
-            script: "node",
-            args: "server.js",
-        },
-    ],
+  apps: [
+    {
+      name: "my-website",
+      script: "node",
+      args: "server.js",
+    },
+  ],
 };
