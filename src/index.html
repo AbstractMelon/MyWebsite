@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abstractmelon</title>
+    <meta
+      name="description"
+      content="Welcome to my personal webpage. Mess around with whatever I do, it's probably somewhere on this page."
+    />
+    <meta
+      name="keywords"
+      content="Abstract Melon, personal webpage, interests, projects, thoughts, programming, tech, chaos, fun, mess"
+    />
+    <meta name="author" content="Abstract Melon" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="background-animation">
+      <div class="watermelon-grid"></div>
+    </div>
+
+    <div class="container">
+      <header>
+        <h1>Hey, I'm melon!</h1>
+      </header>
+      <section>
+        <h2>About Me</h2>
+        <p>
+          I'm a total mess, but in a fun way! I love coding, tech, and all sorts
+          of other nerdy things. I'm also super into making cool stuff and
+          breaking things (not always on purpose).
+        </p>
+      </section>
+      <br />
+      <h2></h2>
+      <br />
+      <section class="projects">
+        <h2>Projects</h2>
+        <div
+          class="project-box"
+          onclick="handleProjectClick('Azurite', 'https://github.com/AbstractMelon/Azurite')"
+        >
+          <h3>Azurite</h3>
+          <p>Modding site similar to Thunderstore!</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleProjectClick('SynkChat', 'https://github.com/AbstractMelon/SynkChat')"
+        >
+          <h3>SynkChat</h3>
+          <p>JavaScript chat application.</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleProjectClick('SyntaxiaIDE', 'https://github.com/AbstractMelon/SyntaxiaIDE')"
+        >
+          <h3>SyntaxiaIDE</h3>
+          <p>The IDE for Weblift!</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleProjectClick('AstraSim', 'https://github.com/AbstractMelon/AstraSim')"
+        >
+          <h3>AstraSim</h3>
+          <p>A space bridge simulator written in TypeScript!</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleProjectClick('Many More', 'https://abstractmelon.net/projects')"
+        >
+          <h3>And many more!</h3>
+          <p>You can see a list of all of my projects by clicking this box!</p>
+        </div>
+      </section>
+      <br />
+      <h2></h2>
+      <br />
+      <section class="projects">
+        <h2>Languages</h2>
+        <div
+          class="project-box"
+          onclick="handleLanguageClick('Go', 'https://golang.org/')"
+        >
+          <h3>Go</h3>
+          <p>A language developed by Google.</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleLanguageClick('C++', 'https://en.cppreference.com/w/cpp')"
+        >
+          <h3>C++</h3>
+          <p>A powerful and efficient language.</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleLanguageClick('C#', 'https://docs.microsoft.com/en-us/dotnet/csharp/')"
+        >
+          <h3>C#</h3>
+          <p>A modern, object-oriented programming language.</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleLanguageClick('JavaScript', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript')"
+        >
+          <h3>JavaScript</h3>
+          <p>A language used for client-side scripting on the web.</p>
+        </div>
+        <div
+          class="project-box"
+          onclick="handleLanguageClick('TypeScript', 'https://www.typescriptlang.org/')"
+        >
+          <h3>TypeScript</h3>
+          <p>A typed superset of JavaScript.</p>
+        </div>
+      </section>
+      <h2></h2>
+      <section class="support-me">
+        <h2>Support Me</h2>
+        <p>
+          If you'd like to support me, you can do so by
+          <a
+            href="https://www.buymeacoffee.com/abstractmelon"
+            target="_blank"
+            rel="noopener noreferrer"
+            >buying me a coffee</a
+          >, or by supporting me on
+          <a
+            href="https://github.com/sponsors/AbstractMelon"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub</a
+          >
+          or
+          <a
+            href="https://www.patreon.com/AbstractMelon"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Patreon</a
+          >.
+        </p>
+      </section>
+      <section>
+        <h2>Contact Me</h2>
+        <p>
+          If you'd like to get in touch with me, feel free to reach out via
+          email at
+          <a href="mailto:abstractmelons@gmail.com">abstractmelons@gmail.com</a
+          >, or via Discord at Abstractmelon.
+        </p>
+      </section>
+      <div class="footer">
+        <p>Created by Abstractmelon | &copy; 2025</p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var container = document.querySelector(".container");
+        var elementsToFade = container.querySelectorAll("*");
+
+        function isVisible(element) {
+          var rect = element.getBoundingClientRect();
+          return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <=
+              (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <=
+              (window.innerWidth || document.documentElement.clientWidth)
+          );
+        }
+
+        function fadeIn(elements) {
+          elements.forEach(function (element) {
+            if (isVisible(element)) {
+              element.style.transition = "opacity 3s";
+              element.style.opacity = 1;
+            }
+          });
+        }
+
+        window.addEventListener("scroll", function () {
+          fadeIn(elementsToFade);
+        });
+
+        // Initial check
+        fadeIn(elementsToFade);
+      });
+
+      function handleProjectClick(projectName, projectLink) {
+        window.open(projectLink, "_blank");
+        event.target.classList.add("clicked");
+        setTimeout(() => {
+          event.target.classList.remove("clicked");
+        }, 500);
+      }
+    </script>
+  </body>
+</html>

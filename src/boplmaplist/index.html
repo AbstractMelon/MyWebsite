@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bopl Map list</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <!-- <h1>Bopl map list</h1> -->
+    <div class="image-grid" id="image-grid"></div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const imageGrid = document.getElementById("image-grid");
+        const imagesCount = 62;
+
+        for (let i = 0; i < imagesCount; i++) {
+          const imageGridItem = document.createElement("div");
+          imageGridItem.className = "image-grid-item";
+
+          const image = document.createElement("img");
+          image.src = `./images/image${i}.jpeg`;
+          image.alt = `Image ${i}`;
+
+          const imageNumber = document.createElement("div");
+          imageNumber.className = "image-number";
+          imageNumber.textContent = i;
+
+          imageGridItem.appendChild(image);
+          imageGridItem.appendChild(imageNumber);
+          imageGrid.appendChild(imageGridItem);
+        }
+      });
+    </script>
+  </body>
+</html>

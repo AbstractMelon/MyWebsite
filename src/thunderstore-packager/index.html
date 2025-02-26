@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thunderstore Packager</title>
+    <meta name="author" content="Abstract Melon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Thunderstore Packager</h1>
+
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Epic Mod" />
+      </div>
+      <div class="form-group">
+        <label for="version">Version:</label>
+        <input type="text" id="version" name="version" placeholder="1.0.0" />
+      </div>
+      <div class="form-group">
+        <label for="website">Website URL:</label>
+        <input
+          type="text"
+          id="website"
+          name="website"
+          placeholder="https://github.com/yourname/reponame/"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea
+          id="description"
+          rows="5"
+          cols="50"
+          placeholder="Type your description here..."
+        ></textarea>
+      </div>
+
+      <br />
+
+      <h2>Edit README.md</h2>
+      <textarea
+        id="readme"
+        rows="10"
+        cols="50"
+        placeholder="Type your readme here..."
+      ></textarea>
+
+      <br /><br /><br />
+
+      <div class="form-group">
+        <label for="dependencies">Dependencies:</label>
+        <input
+          type="text"
+          id="dependencies"
+          name="dependencies"
+          placeholder="Enter dependencies separated by commas"
+        />
+      </div>
+      <div class="form-group">
+        <label>Add Common Dependencies:</label>
+        <select id="comDepSelect">
+          <option value="BepInEx-BepInExPack-5.4.2100">BepInEx Pack</option>
+          <option value="AbstractMelon-AntiMatchmaking-1.0.1">
+            Anti Matchmaking
+          </option>
+          <option value="EntwinedTeam-Entwined-1.0.0">Entwined</option>
+          <option value="DavidLovesJellyCarWorlds-PlatformApi-1.1.7">
+            Platform Api
+          </option>
+          <option value="AbstractMelon-BattleLib-0.1.2">BattleLib</option>
+          <option value="erwer-AGoodNameLib-4.1.2">AGoodNameLib</option>
+        </select>
+        <button id="addCommonDependency">Add Dependency</button>
+      </div>
+
+      <br />
+
+      <form id="uploadForm" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="dllFile">Upload .dll file:</label>
+          <input type="file" id="dllFile" name="dllFile" accept=".dll" />
+        </div>
+        <div class="form-group">
+          <label for="pngFile">Upload .png file:</label>
+          <input type="file" id="pngFile" name="pngFile" accept=".png" />
+        </div>
+      </form>
+
+      <h2>Import pack</h2>
+      <input type="file" id="importFile" accept=".zip" />
+      <button id="importBtn">Import .zip</button>
+
+      <br /><br /><br />
+
+      <button id="packageBtn">Package Your File</button>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"
+      integrity="sha512-Ww1y9OuQ2kehgVWSD/3nhgfrb424O3802QYP/A5gPXoM4+rRjiKrjHdGxQKrMGQykmsJ/86oGdHszfcVgUr4hA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
