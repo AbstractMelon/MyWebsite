@@ -12,6 +12,7 @@ body {
   margin: 0;
   overflow-x: hidden;
   position: relative;
+  animation: fadeIn 0.5s ease;
 }
 
 .container {
@@ -22,6 +23,7 @@ body {
   border: 2px solid #00ffff;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.7);
+  animation: fadeIn 0.5s ease;
 }
 
 h1 {
@@ -31,23 +33,23 @@ h1 {
   padding-bottom: 5px;
   margin-bottom: 20px;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 h2 {
   color: #00ffff;
   border-bottom: 2px solid #00ffff;
   padding-bottom: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 p {
   line-height: 1.6;
   margin-bottom: 15px;
   opacity: 0;
-  transition: opacity 0.5s ease;
+  animation: fadeIn 0.5s ease forwards;
 }
 
 .projects,
@@ -63,7 +65,7 @@ p {
   border: 2px solid #00ffff;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease-in-out, opacity 0.5s ease;
+  transition: transform 0.1s, opacity 0.5s ease;
   cursor: pointer;
 }
 
@@ -86,6 +88,12 @@ p {
   width: 95%;
   max-width: 800px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.support-me:hover {
+  transform: scale(1.01);
+  transition: transform 0.3s ease;
 }
 
 .support-me a {
@@ -112,6 +120,15 @@ p {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
