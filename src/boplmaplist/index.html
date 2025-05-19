@@ -3,16 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bopl Map list</title>
+    <title>Bopl Map List</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
 
   <body>
-    <!-- <h1>Bopl map list</h1> -->
+    <div class="particles"></div>
+
+    <div class="glow"></div>
+
+    <h1>Bopl Map List</h1>
     <div class="image-grid" id="image-grid"></div>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // --- Image Grid Generation ---
         const imageGrid = document.getElementById("image-grid");
         const imagesCount = 62;
 
@@ -22,7 +27,7 @@
 
           const image = document.createElement("img");
           image.src = `./images/image${i}.jpeg`;
-          image.alt = `Image ${i}`;
+          image.alt = `Map ${i}`;
 
           const imageNumber = document.createElement("div");
           imageNumber.className = "image-number";
@@ -31,6 +36,36 @@
           imageGridItem.appendChild(image);
           imageGridItem.appendChild(imageNumber);
           imageGrid.appendChild(imageGridItem);
+        }
+
+        // --- Particle Creation ---
+        const particlesContainer = document.querySelector(".particles");
+        const numParticles = 250;
+
+        for (let i = 0; i < numParticles; i++) {
+          const particle = document.createElement("div");
+          particle.classList.add("particle");
+          const size = Math.random() * 8 + 2; // Size between 2px and 10px
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+          // Add random delay to animation
+          particle.style.animationDelay = `${Math.random() * 3}s`;
+          particlesContainer.appendChild(particle);
+        }
+
+        // --- Cursor Glow Effect ---
+        const glow = document.querySelector(".glow");
+        // Check if glow element exists before adding listener
+        if (glow) {
+          document.addEventListener("mousemove", (e) => {
+            // Offset by half the glow size (300px / 2 = 150px) to center it
+            glow.style.left = `${e.clientX - 150}px`;
+            glow.style.top = `${e.clientY - 150}px`;
+          });
+        } else {
+          console.error("Glow element not found.");
         }
       });
     </script>

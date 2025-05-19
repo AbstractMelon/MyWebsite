@@ -3,168 +3,495 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abstractmelon</title>
+
+    <!-- Title and Meta Description -->
+    <title>Abstractmelon | Portfolio</title>
     <meta
       name="description"
-      content="Welcome to my personal webpage. Mess around with whatever I do, it's probably somewhere on this page."
+      content="This is my personal portfolio, showcasing projects and skills as a full-stack web developer and Linux enthusiast. Check out my latest work and learn more about me."
     />
+
+    <!-- SEO Keywords -->
     <meta
       name="keywords"
-      content="Abstract Melon, personal webpage, interests, projects, thoughts, programming, tech, chaos, fun, mess"
+      content="Abstractmelon, web development, full-stack developer, Vue.js, Go, Linux, DevOps, portfolio, software engineering, projects, backend, frontend, JavaScript, TypeScript, developer portfolio, Abstract melon, abstract melon, abstractmelon, abstractmelon.net"
     />
-    <meta name="author" content="Abstract Melon" />
-    <meta name="robots" content="index, follow" />
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Social Media and Open Graph -->
+    <meta property="og:title" content="Abstractmelon | Portfolio" />
+    <meta
+      property="og:description"
+      content="Check out my latest work and skills!"
+    />
+    <meta
+      property="og:image"
+      content="https://abstractmelon.net/assets/600x400.png"
+    />
+    <meta property="og:url" content="https://abstractmelon.net/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Abstractmelon | Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Explore projects and skills of Abstractmelon, a passionate full-stack developer and Linux enthusiast."
+    />
+    <meta
+      name="twitter:image"
+      content="https://abstractmelon.net/assets/600x400.png"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png" type="image/png" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://abstractmelon.net/" />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
-    <div class="background-animation">
-      <div class="watermelon-grid"></div>
-    </div>
+    <!-- Navigation -->
+    <nav id="navbar">
+      <a href="#" class="logo">
+        <img
+          src="/assets/watermelon.svg"
+          alt="Watermelon Icon"
+          width="32"
+          height="32"
+        />
+        Abstract<span>melon</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-nav-toggle">
+        <svg
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          stroke="currentColor"
+          stroke-width="2"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
 
-    <div class="container">
-      <header>
-        <h1>Hey, I'm melon!</h1>
-      </header>
-      <section>
-        <h2>About Me</h2>
-        <p>
-          I'm a total mess, but in a fun way! I love coding, tech, and all sorts
-          of other nerdy things. I'm also super into making cool stuff and
-          breaking things (not always on purpose).
-        </p>
-      </section>
-      <br />
-      <h2></h2>
-      <br />
-      <section class="projects">
-        <h2>Projects</h2>
-        <div
-          class="project-box"
-          onclick="handleProjectClick('Azurite', 'https://github.com/AbstractMelon/Azurite')"
-        >
-          <h3>Azurite</h3>
-          <p>Modding site similar to Thunderstore!</p>
+    <!-- Header/Hero -->
+    <header id="home">
+      <div class="particles" id="particles"></div>
+      <div class="glow"></div>
+      <div class="hero">
+        <h1>Abstract<span style="color: var(--primary)">melon</span></h1>
+        <p>I'm a <span class="typed-text"></span></p>
+        <div style="margin-top: 2rem">
+          <a href="#projects" class="btn">View Projects</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
         </div>
-        <div
-          class="project-box"
-          onclick="handleProjectClick('SynkChat', 'https://github.com/AbstractMelon/SynkChat')"
-        >
-          <h3>SynkChat</h3>
-          <p>JavaScript chat application.</p>
-        </div>
-        <div
-          class="project-box"
-          onclick="handleProjectClick('SyntaxiaIDE', 'https://github.com/AbstractMelon/SyntaxiaIDE')"
-        >
-          <h3>SyntaxiaIDE</h3>
-          <p>The IDE for Weblift!</p>
-        </div>
-        <div
-          class="project-box"
-          onclick="handleProjectClick('AstraSim', 'https://github.com/AbstractMelon/AstraSim')"
-        >
-          <h3>AstraSim</h3>
-          <p>A space bridge simulator written in TypeScript!</p>
-        </div>
-        <div
-          class="project-box"
-          onclick="handleProjectClick('Many More', 'https://abstractmelon.net/projects')"
-        >
-          <h3>And many more!</h3>
-          <p>You can see a list of all of my projects by clicking this box!</p>
-        </div>
-      </section>
-      <br />
-      <h2></h2>
-      <br />
-      <section class="projects">
-        <h2>Languages</h2>
-        <div
-          class="project-box"
-          onclick="handleLanguageClick('Go', 'https://golang.org/')"
-        >
-          <h3>Go</h3>
-          <p>A language developed by Google.</p>
-        </div>
-        <div
-          class="project-box"
-          onclick="handleLanguageClick('C++', 'https://en.cppreference.com/w/cpp')"
-        >
-          <h3>C++</h3>
-          <p>A powerful and efficient language.</p>
-        </div>
-        <div
-          class="project-box"
-          onclick="handleLanguageClick('C#', 'https://docs.microsoft.com/en-us/dotnet/csharp/')"
-        >
-          <h3>C#</h3>
-          <p>A modern, object-oriented programming language.</p>
-        </div>
-        <div
-          class="project-box"
-          onclick="handleLanguageClick('JavaScript', 'https://developer.mozilla.org/en-US/docs/Web/JavaScript')"
-        >
-          <h3>JavaScript</h3>
-          <p>A language used for client-side scripting on the web.</p>
-        </div>
-        <div
-          class="project-box"
-          onclick="handleLanguageClick('TypeScript', 'https://www.typescriptlang.org/')"
-        >
-          <h3>TypeScript</h3>
-          <p>A typed superset of JavaScript.</p>
-        </div>
-      </section>
-      <h2></h2>
-      <section class="support-me">
-        <h2>Support Me</h2>
-        <p>
-          If you'd like to support me, you can do so by
-          <a
-            href="https://www.buymeacoffee.com/abstractmelon"
-            target="_blank"
-            rel="noopener noreferrer"
-            >buying me a coffee</a
-          >, or by supporting me on
-          <a
-            href="https://github.com/sponsors/AbstractMelon"
-            target="_blank"
-            rel="noopener noreferrer"
-            >GitHub</a
-          >
-          or
-          <a
-            href="https://www.patreon.com/AbstractMelon"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Patreon</a
-          >.
-        </p>
-      </section>
-      <section>
-        <h2>Contact Me</h2>
-        <p>
-          If you'd like to get in touch with me, feel free to reach out via
-          email at
-          <a href="mailto:abstractmelons@gmail.com">abstractmelons@gmail.com</a
-          >, or via Discord at Abstractmelon.
-        </p>
-      </section>
-      <div class="footer">
-        <p>Created by Abstractmelon | &copy; 2025</p>
       </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Hello! I'm Abstractmelon</h3>
+            <p>
+              I am a passionate developer with expertise in a wide range of
+              technologies. I specialize in Vue.js, Go, and Linux server
+              administration. My journey in software development has led me to
+              create numerous projects that solve real-world problems.
+            </p>
+            <p>
+              I enjoy working on challenging projects that push my skills to the
+              limit. From web development to system administration, I love
+              exploring new technologies and finding elegant solutions to
+              complex problems.
+            </p>
+            <p>
+              Currently, I'm focused on building high-performance web
+              applications and robust backend systems. I'm particularly
+              interested in server management, containerization, and creating
+              efficient, scalable software.
+            </p>
+          </div>
+          <div class="about-img">
+            <img src="/assets/600x400.png" alt="Abstractmelon" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+      <div class="glow" style="top: 20%; left: 10%"></div>
+      <div class="glow" style="bottom: 20%; right: 10%"></div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills & Expertise</h2>
+          <p>A comprehensive overview of my technical capabilities</p>
+        </div>
+        <div class="skills-wrapper">
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="48"
+                height="48"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <!-- Monitor screen -->
+                <rect x="3" y="4" width="18" height="14" rx="2" ry="2"></rect>
+
+                <!-- Stand -->
+                <line x1="12" y1="18" x2="12" y2="22"></line>
+                <line x1="8" y1="22" x2="16" y2="22"></line>
+              </svg>
+            </div>
+            <h3 class="skill-title">Frontend Development</h3>
+            <ul class="skill-list">
+              <li>Vue.js</li>
+              <li>JavaScript/TypeScript</li>
+              <li>HTML/CSS/Tailwind</li>
+              <li>NanoJS Framework</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="48"
+                height="48"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6" y2="6"></line>
+                <line x1="6" y1="18" x2="6" y2="18"></line>
+              </svg>
+            </div>
+            <h3 class="skill-title">Backend Development</h3>
+            <ul class="skill-list">
+              <li>Go</li>
+              <li>C/C++</li>
+              <li>MongoDB</li>
+              <li>Strontium Database</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="48"
+                height="48"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M19 16V6.5C19 5.4 18.1 4.5 17 4.5H11.5" />
+                <path d="M14 2L11 4.5L14 7" />
+                <path
+                  d="M19 22C20.6569 22 22 20.6569 22 19C22 17.3431 20.6569 16 19 16C17.3431 16 16 17.3431 16 19C16 20.6569 17.3431 22 19 22Z"
+                />
+                <path d="M5 8V17.5C5 18.6 5.9 19.5 7 19.5H12.5" />
+                <path d="M10 22L13 19.5L10 17" />
+                <path
+                  d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z"
+                />
+              </svg>
+            </div>
+            <h3 class="skill-title">DevOps & Servers</h3>
+            <ul class="skill-list">
+              <li>Linux Administration</li>
+              <li>Docker & Kubernetes</li>
+              <li>Nginx</li>
+              <li>Server Management</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">
+              <svg
+                viewBox="0 0 24 24"
+                width="48"
+                height="48"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3 class="skill-title">Tools & Practices</h3>
+            <ul class="skill-list">
+              <li>VSCode</li>
+              <li>Arch Linux</li>
+              <li>Git/GitHub</li>
+              <li>Firefox</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Projects</h2>
+        </div>
+        <div class="projects-grid" id="projects-container"></div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact Me</h2>
+          <p>Let's connect and discuss your project ideas</p>
+        </div>
+        <div class="contact-content">
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
+            <p>
+              Feel free to reach out to me for collaborations, job
+              opportunities, or just to say hello!
+            </p>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  ></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <a href="mailto:contact@abstractmelon.dev"
+                  >contact@abstractmelon.dev</a
+                >
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                  ></path>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4>GitHub</h4>
+                <a href="https://github.com/Abstractmelon" target="_blank"
+                  >github.com/Abstractmelon</a
+                >
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path
+                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                  ></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </div>
+              <div class="contact-details">
+                <h4>Social</h4>
+                <a href="#" target="_blank">@abstractmelon</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Your Email"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="subject"
+                  placeholder="Subject"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  class="form-control"
+                  id="message"
+                  placeholder="Your Message"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://github.com/Abstractmelon" target="_blank">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" target="_blank">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+              ></path>
+            </svg>
+          </a>
+          <a href="#" target="_blank">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              ></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" target="_blank">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              stroke="currentColor"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+        </div>
+        <p class="copyright">&copy; 2025 Abstractmelon. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+      <svg
+        viewBox="0 0 24 24"
+        width="24"
+        height="24"
+        stroke="currentColor"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M18 15l-6-6-6 6"></path>
+      </svg>
     </div>
 
-    <script>
-      function handleProjectClick(projectName, projectLink) {
-        window.open(projectLink, "_blank");
-        event.target.classList.add("clicked");
-        setTimeout(() => {
-          event.target.classList.remove("clicked");
-        }, 500);
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
