@@ -18,7 +18,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 .container {
@@ -26,7 +26,7 @@ body {
     max-width: 800px;
     background: #1a1a1d;
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
     border: 1px solid #2a2a2f;
     position: relative;
@@ -44,7 +44,7 @@ body {
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 10px;
@@ -57,24 +57,26 @@ h1 {
 .subtitle {
     text-align: center;
     color: #888;
-    margin-bottom: 40px;
-    font-size: 1.1rem;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    line-height: 1.4;
+    padding: 0 10px;
 }
 
 .input-section {
     display: flex;
+    flex-direction: column;
     gap: 15px;
-    margin-bottom: 30px;
-    align-items: stretch;
+    margin-bottom: 25px;
 }
 
 .input-group {
-    flex: 1;
+    width: 100%;
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 16px 20px;
+    padding: 16px 18px;
     background: #2a2a2f;
     border: 2px solid #3a3a40;
     border-radius: 12px;
@@ -91,16 +93,18 @@ input[type="text"]:focus {
 
 input[type="text"]::placeholder {
     color: #666;
+    font-size: 0.9rem;
 }
 
 .button-group {
     display: flex;
-    flex-direction: row;
     gap: 10px;
+    width: 100%;
 }
 
 .btn {
-    padding: 16px 24px;
+    flex: 1;
+    padding: 16px 20px;
     background: #4a9eff;
     color: white;
     border: none;
@@ -110,12 +114,13 @@ input[type="text"]::placeholder {
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
+    min-height: 52px;
 }
 
 .btn:hover {
     background: #3a8eef;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(74, 158, 255, 0.3);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(74, 158, 255, 0.3);
 }
 
 .btn:active {
@@ -136,7 +141,7 @@ input[type="text"]::placeholder {
 .results-section {
     background: #2a2a2f;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
     border: 1px solid #3a3a40;
     transition: all 0.3s ease;
 }
@@ -148,8 +153,8 @@ input[type="text"]::placeholder {
 
 .result-item {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 15px;
     padding: 20px;
     background: #1a1a1d;
     border-radius: 12px;
@@ -160,45 +165,61 @@ input[type="text"]::placeholder {
 
 .result-item:hover {
     border-color: #4a4a50;
-    transform: translateY(-2px);
+}
+
+.result-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
 }
 
 .result-info {
     flex: 1;
+    min-width: 0;
 }
 
 .result-label {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #888;
     margin-bottom: 5px;
 }
 
 .result-value {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #ffffff;
     font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+.result-extras {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
 }
 
 .color-preview {
-    width: 60px;
-    height: 60px;
-    border-radius: 10px;
-    margin-left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
     border: 2px solid #3a3a40;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 .copy-btn {
-    padding: 8px 15px;
+    padding: 10px 16px;
     background: transparent;
     color: #4a9eff;
     border: 1px solid #4a9eff;
     border-radius: 8px;
     cursor: pointer;
     font-size: 0.85rem;
-    margin-left: 15px;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .copy-btn:hover {
@@ -219,18 +240,19 @@ input[type="text"]::placeholder {
     background: rgba(255, 107, 107, 0.1);
     border-radius: 10px;
     border: 1px solid rgba(255, 107, 107, 0.2);
+    line-height: 1.4;
 }
 
 .info-section {
-    margin-top: 30px;
-    padding: 25px;
+    margin-top: 20px;
+    padding: 20px;
     background: rgba(74, 158, 255, 0.05);
     border-radius: 15px;
     border: 1px solid rgba(74, 158, 255, 0.1);
 }
 
 .info-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 10px;
     color: #4a9eff;
@@ -239,23 +261,86 @@ input[type="text"]::placeholder {
 .info-text {
     color: #ccc;
     line-height: 1.6;
+    font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
+/* Tablet styles */
+@media (min-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+
     .input-section {
-        flex-direction: column;
+        flex-direction: row;
+        align-items: stretch;
+        margin-bottom: 30px;
     }
 
     .button-group {
         flex-direction: row;
+        width: auto;
     }
 
-    h1 {
-        font-size: 2rem;
+    .btn {
+        flex: none;
+        padding: 16px 24px;
     }
 
-    .container {
-        padding: 30px 20px;
+    .result-item {
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+    }
+
+    .result-main {
+        flex: 1;
+    }
+
+    .result-extras {
+        margin-left: 20px;
+    }
+
+    .color-preview {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+    }
+
+    .results-section {
+        padding: 30px;
+    }
+
+    .info-section {
+        margin-top: 30px;
+        padding: 25px;
+    }
+
+    .info-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Large screen adjustments */
+@media (min-width: 1024px) {
+    .result-item:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
     }
 }
 

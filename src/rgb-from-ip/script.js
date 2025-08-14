@@ -53,7 +53,8 @@ function ipToRGBA(ip) {
     const r = parts[0] ?? 0;
     const g = parts[1] ?? 0;
     const b = parts[2] ?? 0;
-    const a = parts[3] !== undefined ? parts[3] / 255 : 1;
+    const a =
+      parts[3] !== undefined ? Math.round((parts[3] / 255) * 100) / 100 : 1.0;
     return {
       r,
       g,
@@ -69,7 +70,7 @@ function ipToRGBA(ip) {
     const r = Math.round((groups[0] / 65535) * 255);
     const g = Math.round((groups[1] / 65535) * 255);
     const b = Math.round((groups[2] / 65535) * 255);
-    const a = groups[3] ? groups[3] / 65535 : 1;
+    const a = groups[3] ? Math.round((groups[3] / 65535) * 100) / 100 : 1.0;
     return {
       r,
       g,
@@ -128,62 +129,86 @@ function showResults(input, ip, colorData) {
   const resultsSection = document.getElementById("resultsSection");
 
   resultsSection.innerHTML = `
-                <div class="result-item fade-in">
-                    <div class="result-info">
-                        <div class="result-label">Input</div>
-                        <div class="result-value">${input}</div>
+                    <div class="result-item fade-in">
+                        <div class="result-main">
+                            <div class="result-info">
+                                <div class="result-label">Input</div>
+                                <div class="result-value">${input}</div>
+                            </div>
+                            <div class="result-extras">
+                                <button class="copy-btn" onclick="copyToClipboard('${input}')">Copy</button>
+                            </div>
+                        </div>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('${input}')">Copy</button>
-                </div>
 
-                ${
-                  input !== ip
-                    ? `
-                <div class="result-item fade-in">
-                    <div class="result-info">
-                        <div class="result-label">Resolved IP</div>
-                        <div class="result-value">${ip}</div>
+                    ${
+                      input !== ip
+                        ? `
+                    <div class="result-item fade-in">
+                        <div class="result-main">
+                            <div class="result-info">
+                                <div class="result-label">Resolved IP</div>
+                                <div class="result-value">${ip}</div>
+                            </div>
+                            <div class="result-extras">
+                                <button class="copy-btn" onclick="copyToClipboard('${ip}')">Copy</button>
+                            </div>
+                        </div>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('${ip}')">Copy</button>
-                </div>
-                `
-                    : ""
-                }
+                    `
+                        : ""
+                    }
 
-                <div class="result-item fade-in">
-                    <div class="result-info">
-                        <div class="result-label">RGBA Color</div>
-                        <div class="result-value">${colorData.rgba}</div>
+                    <div class="result-item fade-in">
+                        <div class="result-main">
+                            <div class="result-info">
+                                <div class="result-label">RGBA Color</div>
+                                <div class="result-value">${colorData.rgba}</div>
+                            </div>
+                            <div class="result-extras">
+                                <div class="color-preview" style="background-color: ${colorData.rgba}"></div>
+                                <button class="copy-btn" onclick="copyToClipboard('${colorData.rgba}')">Copy</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="color-preview" style="background-color: ${colorData.rgba}"></div>
-                    <button class="copy-btn" onclick="copyToClipboard('${colorData.rgba}')">Copy</button>
-                </div>
 
-                <div class="result-item fade-in">
-                    <div class="result-info">
-                        <div class="result-label">Hex Color</div>
-                        <div class="result-value">${colorData.hex}</div>
+                    <div class="result-item fade-in">
+                        <div class="result-main">
+                            <div class="result-info">
+                                <div class="result-label">Hex Color</div>
+                                <div class="result-value">${colorData.hex}</div>
+                            </div>
+                            <div class="result-extras">
+                                <div class="color-preview" style="background-color: ${colorData.hex}"></div>
+                                <button class="copy-btn" onclick="copyToClipboard('${colorData.hex}')">Copy</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="color-preview" style="background-color: ${colorData.hex}"></div>
-                    <button class="copy-btn" onclick="copyToClipboard('${colorData.hex}')">Copy</button>
-                </div>
 
-                <div class="result-item fade-in">
-                    <div class="result-info">
-                        <div class="result-label">RGB Values</div>
-                        <div class="result-value">R: ${colorData.r}, G: ${colorData.g}, B: ${colorData.b}</div>
+                    <div class="result-item fade-in">
+                        <div class="result-main">
+                            <div class="result-info">
+                                <div class="result-label">RGB Values</div>
+                                <div class="result-value">R: ${colorData.r}, G: ${colorData.g}, B: ${colorData.b}</div>
+                            </div>
+                            <div class="result-extras">
+                                <button class="copy-btn" onclick="copyToClipboard('rgb(${colorData.r}, ${colorData.g}, ${colorData.b})')">Copy</button>
+                            </div>
+                        </div>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('rgb(${colorData.r}, ${colorData.g}, ${colorData.b})')">Copy</button>
-                </div>
 
-                <div class="result-item fade-in">
-                    <div class="result-info">
-                        <div class="result-label">Alpha Value</div>
-                        <div class="result-value">${colorData.a}</div>
+                    <div class="result-item fade-in">
+                        <div class="result-main">
+                            <div class="result-info">
+                                <div class="result-label">Alpha Value</div>
+                                <div class="result-value">${colorData.a.toFixed(2)}</div>
+                            </div>
+                            <div class="result-extras">
+                                <button class="copy-btn" onclick="copyToClipboard('${colorData.a.toFixed(2)}')">Copy</button>
+                            </div>
+                        </div>
                     </div>
-                    <button class="copy-btn" onclick="copyToClipboard('${colorData.a}')">Copy</button>
-                </div>
-            `;
+                `;
 
   resultsSection.classList.add("active");
 }
@@ -210,25 +235,25 @@ document.addEventListener("copied", function () {
   const notification = document.createElement("div");
   notification.textContent = "Copied to clipboard!";
   notification.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: #4a9eff;
-                color: white;
-                padding: 12px 20px;
-                border-radius: 8px;
-                font-weight: 600;
-                z-index: 1000;
-                animation: slideIn 0.3s ease;
-            `;
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: #4a9eff;
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    font-weight: 600;
+                    z-index: 1000;
+                    animation: slideIn 0.3s ease;
+                `;
 
   const style = document.createElement("style");
   style.textContent = `
-                @keyframes slideIn {
-                    from { transform: translateX(100%); opacity: 0; }
-                    to { transform: translateX(0); opacity: 1; }
-                }
-            `;
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
   document.head.appendChild(style);
 
   document.body.appendChild(notification);
