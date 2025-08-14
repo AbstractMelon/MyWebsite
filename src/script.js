@@ -4,7 +4,6 @@ const textArray = [
   "Full-Stack Developer",
   "Linux Enthusiast",
   "Go Developer",
-  "Vue.js Expert",
   "Server Administrator",
 ];
 let textArrayIndex = 0;
@@ -168,7 +167,7 @@ if (contactForm) {
 
     if (response.ok) {
       alert(
-        "Thanks for your message! I'll get back to you as soon as possible."
+        "Thanks for your message! I'll get back to you as soon as possible.",
       );
     } else {
       alert("Oops, something went wrong. Please try again later.");
@@ -309,14 +308,14 @@ document.addEventListener("DOMContentLoaded", () => {
       demo: "https://nanojs.abstractmelon.net/",
     },
     {
-      title: "Synk & Nito",
-      desc: "Synk: Chat app like Discord. Nito: Encrypted private chat app like Telegram.",
+      title: "Nito",
+      desc: "Encrypted private chat app like Telegram.",
       tech: "Go • Vue.js • WebSockets • Encryption",
-      img: "/assets/projects/synk-nito-project.png",
+      img: "/assets/projects/nito-project.png",
       imgAlt: "Synk & Nito Project",
       github: "https://github.com/AbstractMelon",
       preview: "/assets/projects/nito-project.png",
-      demo: "https://synk.abstractmelon.net/",
+      demo: "https://nito.abstractmelon.net/",
     },
     {
       title: "ReDash",
@@ -349,13 +348,23 @@ document.addEventListener("DOMContentLoaded", () => {
       demo: "https://ladybuild.abstractmelon.net/",
     },
     {
-      title: "IsSiteLive & Itchalyser",
-      desc: "IsSiteLive: Uptime checker. Itchalyser: Itch.io statistics checker.",
+      title: "Itchalyser",
+      desc: "Itch.io statistics checker.",
       tech: "Go • Utilities • APIs",
-      img: "/assets/projects/issitelive-itchalyser-project.png",
-      imgAlt: "IsSiteLive & Itchalyser Project",
+      img: "/assets/projects/itchalyser-project.png",
+      imgAlt: "Itchalyser Project",
       github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/issitelive-itchalyser-project.png",
+      preview: "/assets/projects/itchalyser-project.png",
+      demo: "https://issite.live/",
+    },
+    {
+      title: "IsSiteLive",
+      desc: "Uptime checker.",
+      tech: "Go • Utilities • APIs",
+      img: "/assets/projects/issitelive-project.png",
+      imgAlt: "IsSiteLive Project",
+      github: "https://github.com/AbstractMelon",
+      preview: "/assets/projects/issitelive-project.png",
       demo: "https://issite.live/",
     },
     {
@@ -367,6 +376,16 @@ document.addEventListener("DOMContentLoaded", () => {
       github: "https://github.com/AbstractMelon",
       preview: "/assets/projects/breeze-project.png",
       demo: "https://breeze.abstractmelon.net/",
+    },
+    {
+      title: "RGB From IP",
+      desc: "Converts IP address to RGB color.",
+      tech: "JS • Utilities • APIs",
+      img: "/assets/projects/rgb-from-ip-project.png",
+      imgAlt: "RGB From IP Project",
+      github: "https://github.com/AbstractMelon",
+      preview: "/assets/projects/rgb-from-ip-project.png",
+      demo: "https://abstractmelon.net/rgb-from-ip",
     },
   ];
 

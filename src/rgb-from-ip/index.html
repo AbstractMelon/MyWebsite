@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>IP/Domain to RGBA Converter</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>RGBA Converter</h1>
+            <p class="subtitle">
+                Convert IP addresses and domain names to RGBA colors
+            </p>
+
+            <div class="input-section">
+                <div class="input-group">
+                    <input
+                        type="text"
+                        id="inputField"
+                        placeholder="Enter IP address or domain (e.g., 192.168.1.1 or google.com)"
+                    />
+                </div>
+                <div class="button-group">
+                    <button class="btn" onclick="convertInput()">
+                        Convert
+                    </button>
+                    <button class="btn btn-secondary" onclick="getMyIP()">
+                        My IP
+                    </button>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection">
+                <div class="info-section">
+                    <div class="info-title">How it works</div>
+                    <div class="info-text">
+                        Enter any IP address or domain name above. The tool will
+                        resolve domains to their IP addresses and convert them
+                        into RGBA color values using the information provided.
+                        Each IP generates a consistent, reproducible color.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
