@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "dotenv": "^17.2.1",
     "express": "^4.21.2",
     "http-rails": "^0.53.5",
     "http-server": "^14.1.1",
     "https-server": "^0.1.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.5",
     "pm2": "^5.2.0"
   },
   "name": "mywebsite",

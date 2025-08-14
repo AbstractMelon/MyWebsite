@@ -153,22 +153,27 @@ document.addEventListener("mousemove", (e) => {
   });
 });
 
-// Contact form handling (prevent default for demo)
+// Contact form handling
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(contactForm);
+    const data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      subject: document.getElementById("subject").value,
+      message: document.getElementById("message").value,
+    };
+
     const response = await fetch("/api/contact", {
       method: "POST",
-      body: formData,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     });
 
     if (response.ok) {
-      alert(
-        "Thanks for your message! I'll get back to you as soon as possible.",
-      );
+      alert("Thanks for your message! I'll get back to you soon.");
     } else {
       alert("Oops, something went wrong. Please try again later.");
     }
