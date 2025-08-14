@@ -11,58 +11,86 @@ async function getMyIP() {
 }
 
 async function resolveToIP(input) {
-  // Check if input is already an IP address
-  const ipRegex = /^(\d{1,3}\.){3}\d{1,3}$/;
-  if (ipRegex.test(input)) {
+  const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+  const ipv6Regex = /^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}$/;
+
+  // If already IP, return directly
+  if (ipv4Regex.test(input) || ipv6Regex.test(input)) {
     return input;
   }
 
-  // If it's a domain, try to resolve it
   try {
-    // Use a DNS over HTTPS service to resolve the domain
-    const response = await fetch(
+    // First try IPv4 (A record)
+    let response = await fetch(
       `https://cloudflare-dns.com/dns-query?name=${input}&type=A`,
-      {
-        headers: {
-          Accept: "application/dns-json",
-        },
-      },
+      { headers: { Accept: "application/dns-json" } },
     );
-    const data = await response.json();
-
+    let data = await response.json();
     if (data.Answer && data.Answer.length > 0) {
       return data.Answer[0].data;
-    } else {
-      throw new Error("Domain not found");
     }
+
+    // Then try IPv6 (AAAA record)
+    response = await fetch(
+      `https://cloudflare-dns.com/dns-query?name=${input}&type=AAAA`,
+      { headers: { Accept: "application/dns-json" } },
+    );
+    data = await response.json();
+    if (data.Answer && data.Answer.length > 0) {
+      return data.Answer[0].data;
+    }
+
+    throw new Error("Domain not found");
   } catch (error) {
     throw new Error("Unable to resolve domain to IP address");
   }
 }
 
 function ipToRGBA(ip) {
-  const parts = ip.split(".").map(Number); // Convert each part to number
+  if (ip.includes(".")) {
+    // IPv4
+    const parts = ip.split(".").map(Number);
+    const r = parts[0] ?? 0;
+    const g = parts[1] ?? 0;
+    const b = parts[2] ?? 0;
+    const a = parts[3] !== undefined ? parts[3] / 255 : 1;
+    return {
+      r,
+      g,
+      b,
+      a,
+      rgba: `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`,
+      hex: `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`,
+    };
+  } else {
+    // IPv6
+    let expanded = expandIPv6(ip);
+    const groups = expanded.split(":").map((h) => parseInt(h, 16));
+    const r = Math.round((groups[0] / 65535) * 255);
+    const g = Math.round((groups[1] / 65535) * 255);
+    const b = Math.round((groups[2] / 65535) * 255);
+    const a = groups[3] ? groups[3] / 65535 : 1;
+    return {
+      r,
+      g,
+      b,
+      a,
+      rgba: `rgba(${r}, ${g}, ${b}, ${a.toFixed(2)})`,
+      hex: `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`,
+    };
+  }
+}
 
-  // Ensure we have 4 numbers (use 255 for missing values)
-  const [r, g, b, a] = [
-    parts[0] ?? 0,
-    parts[1] ?? 0,
-    parts[2] ?? 0,
-    parts[3] ?? 255, // If no 4th part, use 255 for full alpha
-  ];
-
-  const alpha = parseFloat((a / 255).toFixed(2)); // Convert 0-255 to 0-1
-
-  return {
-    r,
-    g,
-    b,
-    a: alpha,
-    rgba: `rgba(${r}, ${g}, ${b}, ${alpha})`,
-    hex: `#${r.toString(16).padStart(2, "0")}${g
-      .toString(16)
-      .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`,
-  };
+function expandIPv6(ip) {
+  const parts = ip.split("::");
+  let head = parts[0] ? parts[0].split(":") : [];
+  let tail = parts[1] ? parts[1].split(":") : [];
+  const missing = 8 - (head.length + tail.length);
+  const zeros = Array(missing).fill("0000");
+  const full = [...head, ...zeros, ...tail].map((part) =>
+    part.padStart(4, "0"),
+  );
+  return full.join(":");
 }
 
 async function convertInput() {
