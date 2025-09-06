@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
+const path = require("path");
 
 const app = express();
 const upload = multer();
@@ -39,6 +40,22 @@ app.post("/api/contact", async (req, res) => {
     console.error("Error sending email:", err);
     res.sendStatus(500);
   }
+});
+
+// Jam in a Jiffy
+app.get("/jam/jiffy-theme", (req, res) => {
+  // Jam start/end in MDT (UTC-6)
+  const start = new Date("2025-09-06T08:00:00-06:00");
+  const end = new Date("2025-09-06T20:00:00-06:00");
+  const now = new Date();
+
+  // Choose the image based on time
+  const imageFile =
+    now >= start && now <= end
+      ? "jam_theme.png" // Jam live
+      : "jam_soon.png"; // Before or after jam
+
+  res.sendFile(path.join(__dirname, "src", "assets", "jam", imageFile));
 });
 
 const port = process.env.PORT || 3001;
