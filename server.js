@@ -8,6 +8,20 @@ const upload = multer();
 
 require("dotenv").config();
 
+app.use((req, res, next) => {
+  if (!req.path.includes(".")) {
+    const ip =
+      req.headers["cf-connecting-ip"] ||
+      req.headers["x-forwarded-for"]?.split(",")[0] ||
+      req.socket?.remoteAddress ||
+      req.ip;
+
+    console.log(`[PAGE VISIT] ${req.originalUrl} from ${ip}`);
+  }
+
+  next();
+});
+
 app.use("/", express.static("src"));
 
 app.use(express.json());
