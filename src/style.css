@@ -68,6 +68,11 @@ nav.scrolled {
 
 .logo img {
     margin-right: 8px;
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center 30%;
 }
 
 .nav-links {
@@ -232,7 +237,7 @@ section {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 90rem;
     margin: 0 auto;
 }
 
@@ -405,7 +410,7 @@ section {
 }
 
 .project-desc {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     opacity: 0.9;
     flex-grow: 1;
 }
@@ -420,17 +425,25 @@ section {
 .project-links {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
 }
 
 .project-links a {
-    color: var(--light);
+    color: var(--primary);
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 1px solid rgba(0, 204, 153, 0.35);
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(0, 204, 153, 0.1);
     transition: var(--transition);
 }
 
 .project-links a:hover {
-    color: var(--primary);
+    color: var(--dark);
+    background: var(--primary);
 }
 
 .contact {
@@ -679,4 +692,9 @@ footer {
     .projects-grid {
         grid-template-columns: 1fr;
     }
+
+    .robot-card.featured {
+        grid-column: span 1;
+    }
+
 }

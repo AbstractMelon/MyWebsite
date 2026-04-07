@@ -1,10 +1,10 @@
 // Typed effect
 const typedTextElement = document.querySelector(".typed-text");
 const textArray = [
-  "Full-Stack Developer",
-  "Linux Enthusiast",
-  "Go Developer",
-  "Server Administrator",
+  "Developer",
+  "Combat Robotics Enthusiast",
+  "Open Source Advocate",
+    "Linux Enthusiast",
 ];
 let textArrayIndex = 0;
 let charIndex = 0;
@@ -206,7 +206,7 @@ sections.forEach((section) => {
 // --- Initial Hero Animation ---
 const heroSection = document.querySelector(".hero-section.animate-on-load");
 if (heroSection) {
-  // Use a small delay to ensure styles are loaded
+  // Use a small delay to make sure that the styles are loaded
   setTimeout(() => {
     heroSection.classList.add("visible");
     document.querySelector(".hero").classList.add("visible");
@@ -223,14 +223,26 @@ if (yearSpan) {
 document.addEventListener("DOMContentLoaded", () => {
   const projects = [
     {
+      title: "Zentra",
+      desc: "Open-source, encrypted, community-hostable chat platform with modern server features.",
+      tech: "Go • Svelte • Flutter • Tauri • PostgreSQL • Redis • MinIO",
+      img: "/assets/projects/zentra-project.png",
+      imgAlt: "Zentra Project",
+      links: [
+        { label: "GitHub", href: "https://github.com/zentra-chat" },
+        { label: "Live", href: "https://zentra.abstractmelon.net" },
+      ],
+    },
+    {
       title: "AmberSearcher Suite",
       desc: `A comprehensive search engine stack: Rake (web scraper), Saffron (frontend), Indicium (backend), Helix (linker).`,
-      tech: "Go • Vue.js • Strontium",
+      tech: "Go • Vue.js • Search Infrastructure",
       img: "/assets/projects/ambersearcher-project.png",
       imgAlt: "AmberSearcher Suite Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/ambersearcher-project.png",
-      demo: "https://amber.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "Live", href: "https://amber.abstractmelon.net/" },
+      ],
     },
     {
       title: "BoplMapDB",
@@ -238,9 +250,10 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "Go • Vue.js • JSON",
       img: "/assets/projects/boplmapdb-project.png",
       imgAlt: "BoplMapDB Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/boplmapdb-project.png",
-      demo: "https://map-maker.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "Live", href: "https://map-maker.abstractmelon.net/" },
+      ],
     },
     {
       title: "Silk",
@@ -248,9 +261,10 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "C# • Doorstop • Unity",
       img: "/assets/projects/silk-project.png",
       imgAlt: "Silk Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/silk-project.png",
-      demo: "https://silk.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "Live", href: "https://silk.abstractmelon.net/" },
+      ],
     },
     {
       title: "Gem",
@@ -258,9 +272,10 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "Go • Linux • C",
       img: "/assets/projects/gem-project.png",
       imgAlt: "Gem Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/gem-project.png",
-      demo: "https://gem.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "Live", href: "https://gem.abstractmelon.net/" },
+      ],
     },
     {
       title: "Prism",
@@ -268,29 +283,21 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "Go • Vue.js • Linux",
       img: "/assets/projects/prism-project.png",
       imgAlt: "Prism Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/prism-project.png",
-      demo: "https://prism.abstractmelon.net/",
-    },
-    {
-      title: "FluxVPS",
-      desc: "Infrastructure project for offering cheap VPS hosting services.",
-      tech: "Linux • Go • Networking",
-      img: "/assets/projects/fluxvps-project.png",
-      imgAlt: "FluxVPS Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/fluxvps-project.png",
-      demo: "https://fluxvps.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "Live", href: "https://prism.abstractmelon.net/" },
+      ],
     },
     {
       title: "Azurite",
       desc: "Mod hosting platform.",
-      tech: "Go • Svelte • Strontium",
+      tech: "Go • Svelte • Data Platform",
       img: "/assets/projects/azurite-project.png",
       imgAlt: "Azurite Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/azurite-project.png",
-      demo: "https://azurite.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "Live", href: "https://azurite.abstractmelon.net/" },
+      ],
     },
     {
       title: "FTrack",
@@ -298,29 +305,10 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "Go • C++ • Vue.js",
       img: "/assets/projects/ftrack-project.png",
       imgAlt: "FTrack Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/ftrack-project.png",
-      demo: "https://ftrack.abstractmelon.net/",
-    },
-    {
-      title: "NanoJS",
-      desc: "Fast JavaScript framework for building performant web applications.",
-      tech: "JavaScript • TypeScript",
-      img: "/assets/projects/nanojs-project.png",
-      imgAlt: "NanoJS Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/nanojs-project.png",
-      demo: "https://nanojs.abstractmelon.net/",
-    },
-    {
-      title: "Nito",
-      desc: "Encrypted private chat app like Telegram.",
-      tech: "Go • Vue.js • WebSockets • Encryption",
-      img: "/assets/projects/nito-project.png",
-      imgAlt: "Synk & Nito Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/nito-project.png",
-      demo: "https://nito.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "Live", href: "https://ftrack.abstractmelon.net/" },
+      ],
     },
     {
       title: "ReDash",
@@ -328,19 +316,9 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "Go • Game Servers • Networking",
       img: "/assets/projects/redash-project.png",
       imgAlt: "ReDash Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/redash-project.png",
-      demo: "https://redash.abstractmelon.net/",
-    },
-    {
-      title: "Strontium",
-      desc: "Fast Go database.",
-      tech: "Go • Databases",
-      img: "/assets/projects/strontium-project.png",
-      imgAlt: "Strontium Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/strontium-project.png",
-      demo: "https://strontium.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon/ReDash" },
+      ],
     },
     {
       title: "Ladybuild",
@@ -348,29 +326,10 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "Go • Build Tools",
       img: "/assets/projects/ladybuild-project.png",
       imgAlt: "Ladybuild Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/ladybuild-project.png",
-      demo: "https://ladybuild.abstractmelon.net/",
-    },
-    {
-      title: "Itchalyser",
-      desc: "Itch.io statistics checker.",
-      tech: "Go • Utilities • APIs",
-      img: "/assets/projects/itchalyser-project.png",
-      imgAlt: "Itchalyser Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/itchalyser-project.png",
-      demo: "https://issite.live/",
-    },
-    {
-      title: "IsSiteLive",
-      desc: "Uptime checker.",
-      tech: "Go • Utilities • APIs",
-      img: "/assets/projects/issitelive-project.png",
-      imgAlt: "IsSiteLive Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/issitelive-project.png",
-      demo: "https://issite.live/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon/Ladybuild" },
+        { label: "Live", href: "https://ladybuild.abstractmelon.net/" },
+      ],
     },
     {
       title: "Breeze",
@@ -378,9 +337,10 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "Go • Tooling • Documentation",
       img: "/assets/projects/breeze-project.png",
       imgAlt: "Breeze Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/breeze-project.png",
-      demo: "https://breeze.abstractmelon.net/",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon/Breeze" },
+        { label: "Live", href: "https://breeze.abstractmelon.net/" },
+      ],
     },
     {
       title: "RGB From IP",
@@ -388,9 +348,31 @@ document.addEventListener("DOMContentLoaded", () => {
       tech: "JS • Utilities • APIs",
       img: "/assets/projects/rgb-from-ip-project.png",
       imgAlt: "RGB From IP Project",
-      github: "https://github.com/AbstractMelon",
-      preview: "/assets/projects/rgb-from-ip-project.png",
-      demo: "https://abstractmelon.net/rgb-from-ip",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon/MyWebsite/tree/main/src/rgb-from-ip" },
+        { label: "Live", href: "https://abstractmelon.net/rgb-from-ip" },
+      ],
+    },
+    {
+      title: "RobotRegistry",
+      desc: "A modern, fast data viewer for robot combat events, bots, teams, and rankings.",
+      tech: "Go • Svelte • Tailwind • SQLite",
+      img: "/assets/600x400.png",
+      imgAlt: "RobotRegistry Project",
+      links: [
+        { label: "GitHub", href: "https://github.com/AbstractMelon/RobotRegistry" },
+        { label: "Live", href: "https://robot-registry.abstractmelon.net/" },
+      ],
+    },
+    {
+      title: "Neutron Robotics",
+      desc: "Full-stack e-commerce platform for robotics products with secure Stripe payments.",
+      tech: "SvelteKit • Go • Stripe",
+      img: "/assets/600x400.png",
+      imgAlt: "Neutron Robotics Project",
+      links: [
+        { label: "Live", href: "https://neutron-robotics.abstractmelon.net/" },
+      ],
     },
   ];
 
@@ -407,17 +389,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <h3 class="project-title">${project.title}</h3>
         <p class="project-desc">${project.desc}</p>
         <div class="project-tech">${project.tech}</div>
-        <div class="project-links">
-          <a href="${project.github}" target="_blank" title="GitHub">
-            <img src="/assets/github.svg" alt="GitHub" width="24" height="24" />
-          </a>
-          <a href="${project.preview}" target="_blank" title="Preview">
-            <img src="/assets/download.svg" alt="Preview" width="24" height="24" />
-          </a>
-          <a href="${project.demo}" target="_blank" title="Demo">
-            <img src="/assets/link.svg" alt="Demo" width="24" height="24" />
-          </a>
-        </div>
+        ${project.links.length
+          ? `<div class="project-links">${project.links
+              .map((link) => `<a href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`)
+              .join("")}</div>`
+          : ""}
       </div>
     `;
     container.appendChild(card);
