@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Zentra",
       desc: "Open-source, encrypted, community-hostable chat platform with modern server features.",
       tech: "Go • Svelte • Flutter • Tauri • PostgreSQL • Redis • MinIO",
-      img: "/assets/projects/zentra-project.png",
+      img: "/assets/projects/zentra-project.jpg",
       imgAlt: "Zentra Project",
       links: [
         { label: "GitHub", href: "https://github.com/zentra-chat" },
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "AmberSearcher Suite",
       desc: `A comprehensive search engine stack: Rake (web scraper), Saffron (frontend), Indicium (backend), Helix (linker).`,
       tech: "Go • Vue.js • Search Infrastructure",
-      img: "/assets/projects/ambersearcher-project.png",
+      img: "/assets/projects/ambersearcher-project.jpg",
       imgAlt: "AmberSearcher Suite Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon" },
@@ -248,7 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "BoplMapDB",
       desc: "Map hosting and database site for the game Bopl Battle.",
       tech: "Go • Vue.js • JSON",
-      img: "/assets/projects/boplmapdb-project.png",
+      img: "/assets/projects/boplmapdb-project.jpg",
       imgAlt: "BoplMapDB Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon" },
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Silk",
       desc: "Custom mod loader designed for the game Spiderheck.",
       tech: "C# • Doorstop • Unity",
-      img: "/assets/projects/silk-project.png",
+      img: "/assets/projects/silk-project.jpg",
       imgAlt: "Silk Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon" },
@@ -270,7 +270,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Gem",
       desc: "Linux task manager designed for servers, offering performance monitoring and resource management.",
       tech: "Go • Linux • C",
-      img: "/assets/projects/gem-project.png",
+      img: "/assets/projects/gem-project.jpg",
       imgAlt: "Gem Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon" },
@@ -281,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Prism",
       desc: "Linux server manager providing intuitive web-based administration for server environments.",
       tech: "Go • Vue.js • Linux",
-      img: "/assets/projects/prism-project.png",
+      img: "/assets/projects/prism-project.jpg",
       imgAlt: "Prism Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon" },
@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Azurite",
       desc: "Mod hosting platform.",
       tech: "Go • Svelte • Data Platform",
-      img: "/assets/projects/azurite-project.png",
+      img: "/assets/projects/azurite-project.jpg",
       imgAlt: "Azurite Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon" },
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "FTrack",
       desc: "ADS-D receiver handler.",
       tech: "Go • C++ • Vue.js",
-      img: "/assets/projects/ftrack-project.png",
+      img: "/assets/projects/ftrack-project.jpg",
       imgAlt: "FTrack Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon" },
@@ -314,7 +314,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "ReDash",
       desc: "Custom community server implementation for the game 3Dash.",
       tech: "Go • Game Servers • Networking",
-      img: "/assets/projects/redash-project.png",
+      img: "/assets/projects/redash-project.jpg",
       imgAlt: "ReDash Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon/ReDash" },
@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Ladybuild",
       desc: "Automatic Ladybird building tool.",
       tech: "Go • Build Tools",
-      img: "/assets/projects/ladybuild-project.png",
+      img: "/assets/projects/ladybuild-project.jpg",
       imgAlt: "Ladybuild Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon/Ladybuild" },
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Breeze",
       desc: "Docs generator.",
       tech: "Go • Tooling • Documentation",
-      img: "/assets/projects/breeze-project.png",
+      img: "/assets/projects/breeze-project.jpg",
       imgAlt: "Breeze Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon/Breeze" },
@@ -346,7 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "RGB From IP",
       desc: "Converts IP address to RGB color.",
       tech: "JS • Utilities • APIs",
-      img: "/assets/projects/rgb-from-ip-project.png",
+      img: "/assets/projects/rgb-from-ip-project.jpg",
       imgAlt: "RGB From IP Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon/MyWebsite/tree/main/src/rgb-from-ip" },
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "RobotRegistry",
       desc: "A modern, fast data viewer for robot combat events, bots, teams, and rankings.",
       tech: "Go • Svelte • Tailwind • SQLite",
-      img: "/assets/600x400.png",
+      img: "/assets/600x400.jpg",
       imgAlt: "RobotRegistry Project",
       links: [
         { label: "GitHub", href: "https://github.com/AbstractMelon/RobotRegistry" },
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
       title: "Neutron Robotics",
       desc: "Full-stack e-commerce platform for robotics products with secure Stripe payments.",
       tech: "SvelteKit • Go • Stripe",
-      img: "/assets/600x400.png",
+      img: "/assets/600x400.jpg",
       imgAlt: "Neutron Robotics Project",
       links: [
         { label: "Live", href: "https://neutron-robotics.abstractmelon.net/" },
