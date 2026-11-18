@@ -1,6 +1,7 @@
 :root {
     --primary: #00cc99;
     --secondary: #ff6b6b;
+    --melon: #ff6b81;
     --dark: #1a1a2e;
     --light: #f8f9fa;
     --accent: #4a47a3;
@@ -20,6 +21,11 @@ body {
     color: var(--light);
     line-height: 1.6;
     overflow-x: hidden;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
 }
 
 header {
@@ -63,7 +69,7 @@ nav.scrolled {
 }
 
 .logo span {
-    color: var(--light);
+    color: var(--melon);
 }
 
 .logo img {
@@ -125,23 +131,40 @@ nav.scrolled {
     text-align: center;
     position: relative;
     z-index: 2;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero.visible {
+    opacity: 1;
+    transform: none;
 }
 
 .hero h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
     font-size: 4rem;
     margin-bottom: 1rem;
     font-weight: 800;
 }
 
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+.hero h1 img {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: center 30%;
 }
 
-.hero .typed-text {
+.hero h1 .brand-abstract {
     color: var(--primary);
-    font-weight: 700;
+}
+
+.hero h1 .brand-melon {
+    color: var(--melon);
 }
 
 .btn {
@@ -203,6 +226,17 @@ nav.scrolled {
 
 section {
     padding: 6rem 2rem;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.animate {
+    opacity: 1;
+    transform: none;
 }
 
 .section-title {
@@ -537,6 +571,11 @@ section {
     box-shadow: 0 0 0 3px rgba(0, 204, 153, 0.2);
 }
 
+.form-control:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
 textarea.form-control {
     min-height: 150px;
     resize: vertical;
@@ -559,6 +598,27 @@ textarea.form-control {
 .submit-btn:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 204, 153, 0.4);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.form-status {
+    min-height: 1.5rem;
+    margin-top: 1rem;
+    color: var(--primary);
+    font-size: 0.95rem;
 }
 
 footer {
@@ -620,6 +680,7 @@ footer {
     font-size: 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+    border: none;
     z-index: 999;
     opacity: 0;
     visibility: hidden;
@@ -658,8 +719,9 @@ footer {
         font-size: 3rem;
     }
 
-    .hero p {
-        font-size: 1.2rem;
+    .hero h1 img {
+        width: 64px;
+        height: 64px;
     }
 
     .nav-links {
@@ -693,8 +755,21 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .robot-card.featured {
-        grid-column: span 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 
+    .hero,
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
 }

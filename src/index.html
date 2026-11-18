@@ -25,7 +25,7 @@
         />
         <meta
             property="og:image"
-            content="https://abstractmelon.net/assets/600x400.png"
+            content="https://abstractmelon.net/assets/600x400.jpg"
         />
         <meta property="og:url" content="https://abstractmelon.net/" />
 
@@ -38,7 +38,7 @@
         />
         <meta
             name="twitter:image"
-            content="https://abstractmelon.net/assets/600x400.png"
+            content="https://abstractmelon.net/assets/600x400.jpg"
         />
 
         <!-- Favicon -->
@@ -62,14 +62,19 @@
                 />
                 Abstract<span>melon</span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="main-nav">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#robotics">Robotics</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-nav-toggle">
+            <button
+                type="button"
+                class="mobile-nav-toggle"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="main-nav"
+            >
                 <svg
                     viewBox="0 0 24 24"
                     width="24"
@@ -92,10 +97,18 @@
             <div class="particles" id="particles"></div>
             <div class="glow"></div>
             <div class="hero">
-                <h1>
-                    Abstract<span style="color: var(--primary)">melon</span>
+                <h1 class="hero-title">
+                    <img
+                        src="/assets/abstractpenrose.png"
+                        alt="Abstract Penrose Logo"
+                        width="80"
+                        height="80"
+                    />
+                    <span class="brand-word"
+                        ><span class="brand-abstract">Abstract</span
+                        ><span class="brand-melon">melon</span></span
+                    >
                 </h1>
-                <p>I'm a <span class="typed-text"></span></p>
                 <div style="margin-top: 2rem">
                     <a href="#projects" class="btn">View Projects</a>
                     <a href="#contact" class="btn btn-outline">Contact Me</a>
@@ -177,7 +190,7 @@
                         <h3 class="skill-title">Frontend Development</h3>
                         <ul class="skill-list">
                             <li>Vue.js</li>
-                            <li>Svelete</li>
+                            <li>Svelte</li>
                             <li>JavaScript/TypeScript</li>
                             <li>HTML/CSS/Tailwind</li>
                         </ul>
@@ -431,9 +444,25 @@
                                     required
                                 ></textarea>
                             </div>
+                            <div class="honeypot" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input
+                                    type="text"
+                                    name="website"
+                                    id="website"
+                                    tabindex="-1"
+                                    autocomplete="off"
+                                />
+                            </div>
                             <button type="submit" class="submit-btn">
                                 Send Message
                             </button>
+                            <p
+                                id="form-status"
+                                class="form-status"
+                                role="status"
+                                aria-live="polite"
+                            ></p>
                         </form>
                     </div>
                 </div>
@@ -450,7 +479,12 @@
         </footer>
 
         <!-- Back to Top Button -->
-        <div class="back-to-top" id="backToTop">
+        <button
+            type="button"
+            class="back-to-top"
+            id="backToTop"
+            aria-label="Back to top"
+        >
             <svg
                 viewBox="0 0 24 24"
                 width="24"
@@ -463,7 +497,7 @@
             >
                 <path d="M18 15l-6-6-6 6"></path>
             </svg>
-        </div>
+        </button>
 
         <script src="script.js"></script>
     </body>

@@ -1,45 +1,6 @@
-// Typed effect
-const typedTextElement = document.querySelector(".typed-text");
-const textArray = [
-  "Developer",
-  "Combat Robotics Enthusiast",
-  "Open Source Advocate",
-    "Linux Enthusiast",
-];
-let textArrayIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingDelay = 100;
-let erasingDelay = 50;
-let newTextDelay = 2000;
-
-function type() {
-  const currentText = textArray[textArrayIndex];
-
-  if (isDeleting) {
-    typedTextElement.textContent = currentText.substring(0, charIndex - 1);
-    charIndex--;
-    typingDelay = erasingDelay;
-  } else {
-    typedTextElement.textContent = currentText.substring(0, charIndex + 1);
-    charIndex++;
-    typingDelay = 100;
-  }
-
-  if (!isDeleting && charIndex === currentText.length) {
-    isDeleting = true;
-    typingDelay = newTextDelay;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    textArrayIndex = (textArrayIndex + 1) % textArray.length;
-  }
-
-  setTimeout(type, typingDelay);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  type();
-});
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
 
 // Navigation scroll effect
 const navbar = document.getElementById("navbar");
@@ -57,6 +18,7 @@ const navLinks = document.querySelector(".nav-links");
 mobileNavToggle.addEventListener("click", () => {
   navLinks.classList.toggle("active");
   const isOpen = navLinks.classList.contains("active");
+  mobileNavToggle.setAttribute("aria-expanded", String(isOpen));
   mobileNavToggle.innerHTML = isOpen
     ? '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>'
     : '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
@@ -66,6 +28,7 @@ mobileNavToggle.addEventListener("click", () => {
 document.querySelectorAll(".nav-links a").forEach((link) => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("active");
+    mobileNavToggle.setAttribute("aria-expanded", "false");
     mobileNavToggle.innerHTML =
       '<svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
   });
@@ -74,10 +37,17 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
+    const targetId = this.getAttribute("href");
+    if (!targetId || targetId === "#") return;
+
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
     e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
+    target.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     });
+    history.replaceState(null, "", targetId);
   });
 });
 
@@ -94,7 +64,7 @@ window.addEventListener("scroll", () => {
 backToTopButton.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth",
+    behavior: prefersReducedMotion ? "auto" : "smooth",
   });
 });
 
@@ -126,91 +96,131 @@ for (let i = 0; i < numberOfParticles; i++) {
   particlesContainer.appendChild(particle);
 }
 
-// Glow effect following mouse
-const glowElements = document.querySelectorAll(".glow");
-document.addEventListener("mousemove", (e) => {
-  const mouseX = e.clientX;
-  const mouseY = e.clientY + window.scrollY;
+// Glow effect following mouse. Geometry is cached so mousemove never forces layout.
+const glowTargets = Array.from(document.querySelectorAll(".glow"), (glow) => ({
+  glow,
+  parent: glow.parentElement,
+  rect: null,
+}));
 
-  glowElements.forEach((glow) => {
-    const rect = glow.parentElement.getBoundingClientRect();
-    const parentTop = rect.top + window.scrollY;
-    const parentLeft = rect.left;
-    const parentHeight = rect.height;
-    const parentWidth = rect.width;
+function updateGlowGeometry() {
+  glowTargets.forEach((target) => {
+    target.rect = target.parent.getBoundingClientRect();
+  });
+}
 
-    // Only move if mouse is within or near parent element
-    if (
-      mouseY >= parentTop - 300 &&
-      mouseY <= parentTop + parentHeight + 300 &&
-      mouseX >= parentLeft - 300 &&
-      mouseX <= parentLeft + parentWidth + 300
-    ) {
-      glow.style.top = `${mouseY - parentTop - 150}px`;
-      glow.style.left = `${mouseX - parentLeft - 150}px`;
+updateGlowGeometry();
+window.addEventListener("load", updateGlowGeometry);
+window.addEventListener("resize", updateGlowGeometry);
+window.addEventListener("scroll", updateGlowGeometry, { passive: true });
+
+let mouseX = 0;
+let mouseY = 0;
+let glowFrame = 0;
+
+function positionGlows() {
+  glowFrame = 0;
+
+  glowTargets.forEach(({ glow, rect }) => {
+    if (!rect) return;
+
+    const nearby =
+      mouseY >= rect.top - 300 &&
+      mouseY <= rect.bottom + 300 &&
+      mouseX >= rect.left - 300 &&
+      mouseX <= rect.right + 300;
+
+    if (nearby) {
+      glow.style.top = `${mouseY - rect.top - 150}px`;
+      glow.style.left = `${mouseX - rect.left - 150}px`;
       glow.style.opacity = "0.5";
     }
   });
-});
+}
+
+document.addEventListener(
+  "mousemove",
+  (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!glowFrame) glowFrame = requestAnimationFrame(positionGlows);
+  },
+  { passive: true }
+);
 
 // Contact form handling
 const contactForm = document.getElementById("contactForm");
 if (contactForm) {
+  const submitButton = contactForm.querySelector(".submit-btn");
+  const formStatus = document.getElementById("form-status");
+
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    formStatus.textContent = "";
+    submitButton.disabled = true;
 
     const data = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      subject: document.getElementById("subject").value,
-      message: document.getElementById("message").value,
+      name: document.getElementById("name").value.trim(),
+      email: document.getElementById("email").value.trim(),
+      subject: document.getElementById("subject").value.trim(),
+      message: document.getElementById("message").value.trim(),
+      website: document.getElementById("website").value,
     };
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    if (response.ok) {
-      alert("Thanks for your message! I'll get back to you soon.");
-    } else {
-      alert("Oops, something went wrong. Please try again later.");
+      if (response.ok) {
+        formStatus.textContent =
+          "Thanks for your message. I'll get back to you soon.";
+        contactForm.reset();
+      } else if (response.status === 429) {
+        formStatus.textContent =
+          "Too many messages. Please try again in a few minutes.";
+      } else if (response.status === 400) {
+        formStatus.textContent = "Please check the form fields and try again.";
+      } else {
+        formStatus.textContent = "Something went wrong. Please try again later.";
+      }
+    } catch (err) {
+      formStatus.textContent =
+        "Could not reach the server. Please try again later.";
+    } finally {
+      submitButton.disabled = false;
     }
-
-    contactForm.reset();
   });
 }
 
-// Intersection Observer for animations
+// Scroll reveal animations
 const observerOptions = {
   threshold: 0.1,
   rootMargin: "0px 0px -100px 0px",
 };
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("animate");
-      observer.unobserve(entry.target);
-    }
+if (!prefersReducedMotion && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("animate");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll("section").forEach((section) => {
+    section.classList.add("reveal");
+    observer.observe(section);
   });
-}, observerOptions);
+}
 
-const sections = document.querySelectorAll(".section");
-
-sections.forEach((section) => {
-  observer.observe(section);
-});
-
-// --- Initial Hero Animation ---
-const heroSection = document.querySelector(".hero-section.animate-on-load");
-if (heroSection) {
-  // Use a small delay to make sure that the styles are loaded
-  setTimeout(() => {
-    heroSection.classList.add("visible");
-    document.querySelector(".hero").classList.add("visible");
-  }, 100); // 100ms delay
+// Initial hero animation
+const hero = document.querySelector(".hero");
+if (hero) {
+  requestAnimationFrame(() => hero.classList.add("visible"));
 }
 
 // --- Footer Current Year ---
@@ -240,19 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "/assets/projects/ambersearcher-project.jpg",
       imgAlt: "AmberSearcher Suite Project",
       links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "GitHub", href: "https://github.com/Abstractmelon" },
         { label: "Live", href: "https://amber.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "BoplMapDB",
-      desc: "Map hosting and database site for the game Bopl Battle.",
-      tech: "Go • Vue.js • JSON",
-      img: "/assets/projects/boplmapdb-project.jpg",
-      imgAlt: "BoplMapDB Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon" },
-        { label: "Live", href: "https://map-maker.abstractmelon.net/" },
       ],
     },
     {
@@ -262,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "/assets/projects/silk-project.jpg",
       imgAlt: "Silk Project",
       links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "GitHub", href: "https://github.com/Abstractmelon" },
         { label: "Live", href: "https://silk.abstractmelon.net/" },
       ],
     },
@@ -273,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "/assets/projects/gem-project.jpg",
       imgAlt: "Gem Project",
       links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "GitHub", href: "https://github.com/Abstractmelon" },
         { label: "Live", href: "https://gem.abstractmelon.net/" },
       ],
     },
@@ -284,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "/assets/projects/prism-project.jpg",
       imgAlt: "Prism Project",
       links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "GitHub", href: "https://github.com/Abstractmelon" },
         { label: "Live", href: "https://prism.abstractmelon.net/" },
       ],
     },
@@ -295,29 +294,8 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "/assets/projects/azurite-project.jpg",
       imgAlt: "Azurite Project",
       links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon" },
+        { label: "GitHub", href: "https://github.com/Abstractmelon" },
         { label: "Live", href: "https://azurite.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "FTrack",
-      desc: "ADS-D receiver handler.",
-      tech: "Go • C++ • Vue.js",
-      img: "/assets/projects/ftrack-project.jpg",
-      imgAlt: "FTrack Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon" },
-        { label: "Live", href: "https://ftrack.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "ReDash",
-      desc: "Custom community server implementation for the game 3Dash.",
-      tech: "Go • Game Servers • Networking",
-      img: "/assets/projects/redash-project.jpg",
-      imgAlt: "ReDash Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon/ReDash" },
       ],
     },
     {
@@ -327,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "/assets/projects/ladybuild-project.jpg",
       imgAlt: "Ladybuild Project",
       links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon/Ladybuild" },
+        { label: "GitHub", href: "https://github.com/Abstractmelon/Ladybuild" },
         { label: "Live", href: "https://ladybuild.abstractmelon.net/" },
       ],
     },
@@ -338,40 +316,8 @@ document.addEventListener("DOMContentLoaded", () => {
       img: "/assets/projects/breeze-project.jpg",
       imgAlt: "Breeze Project",
       links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon/Breeze" },
+        { label: "GitHub", href: "https://github.com/Abstractmelon/Breeze" },
         { label: "Live", href: "https://breeze.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "RGB From IP",
-      desc: "Converts IP address to RGB color.",
-      tech: "JS • Utilities • APIs",
-      img: "/assets/projects/rgb-from-ip-project.jpg",
-      imgAlt: "RGB From IP Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon/MyWebsite/tree/main/src/rgb-from-ip" },
-        { label: "Live", href: "https://abstractmelon.net/rgb-from-ip" },
-      ],
-    },
-    {
-      title: "RobotRegistry",
-      desc: "A modern, fast data viewer for robot combat events, bots, teams, and rankings.",
-      tech: "Go • Svelte • Tailwind • SQLite",
-      img: "/assets/600x400.jpg",
-      imgAlt: "RobotRegistry Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/AbstractMelon/RobotRegistry" },
-        { label: "Live", href: "https://robot-registry.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "Neutron Robotics",
-      desc: "Full-stack e-commerce platform for robotics products with secure Stripe payments.",
-      tech: "SvelteKit • Go • Stripe",
-      img: "/assets/600x400.jpg",
-      imgAlt: "Neutron Robotics Project",
-      links: [
-        { label: "Live", href: "https://neutron-robotics.abstractmelon.net/" },
       ],
     },
   ];
@@ -383,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
     card.className = "project-card";
     card.innerHTML = `
       <div class="project-img">
-        <img src="${project.img}" alt="${project.imgAlt}" />
+        <img src="${project.img}" alt="${project.imgAlt}" loading="lazy" decoding="async" />
       </div>
       <div class="project-info">
         <h3 class="project-title">${project.title}</h3>
