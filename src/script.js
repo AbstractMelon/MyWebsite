@@ -234,114 +234,180 @@ document.addEventListener("DOMContentLoaded", () => {
   const projects = [
     {
       title: "Zentra",
-      desc: "Open-source, encrypted, community-hostable chat platform with modern server features.",
-      tech: "Go • Svelte • Flutter • Tauri • PostgreSQL • Redis • MinIO",
+      desc: "An open-source, encrypted, community-hostable chat platform. Servers run their own communities, with channels, roles, moderation, and media hosting built in rather than bolted on.",
+      tech: [
+        "Go",
+        "Svelte",
+        "Flutter",
+        "Tauri",
+        "PostgreSQL",
+        "Redis",
+        "MinIO",
+      ],
       img: "/assets/projects/zentra-project.jpg",
-      imgAlt: "Zentra Project",
+      imgAlt: "Zentra chat interface",
       links: [
+        {
+          label: "Live site",
+          href: "https://zentra.abstractmelon.net",
+          primary: true,
+        },
         { label: "GitHub", href: "https://github.com/zentra-chat" },
-        { label: "Live", href: "https://zentra.abstractmelon.net" },
       ],
     },
     {
-      title: "AmberSearcher Suite",
-      desc: `A comprehensive search engine stack: Rake (web scraper), Saffron (frontend), Indicium (backend), Helix (linker).`,
-      tech: "Go • Vue.js • Search Infrastructure",
-      img: "/assets/projects/ambersearcher-project.jpg",
-      imgAlt: "AmberSearcher Suite Project",
+      title: "TrainTracks",
+      desc: "Real-time transit maps for live GTFS feeds. It ingests vehicle positions, estimates movement between sparse updates, and streams the result to the browser over Server-Sent Events. No polling, no refresh.",
+      tech: ["Go", "SvelteKit", "MapLibre", "PostGIS", "Redis"],
+      img: "/assets/projects/traintracks-project.jpg",
+      imgAlt: "TrainTracks live transit map",
       links: [
-        { label: "GitHub", href: "https://github.com/Abstractmelon" },
-        { label: "Live", href: "https://amber.abstractmelon.net/" },
+        {
+          label: "Live site",
+          href: "https://traintracks.abstractmelon.net/",
+          primary: true,
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/AbstractMelon/TrainTracks",
+        },
+      ],
+    },
+    {
+      title: "OBS Workspaces",
+      desc: "A dock layout plugin for OBS Studio. Save your dock positions, sizes, and window geometry under a name, then switch between layouts from the Docks menu. Profiles are plain JSON, so they can be backed up or moved between machines.",
+      tech: ["C++", "Qt 6", "OBS API"],
+      img: "/assets/projects/obs-workspaces-project.gif",
+      imgAlt: "Animated demo of custom OBS dock layouts",
+      links: [
+        {
+          label: "GitHub",
+          href: "https://github.com/AbstractMelon/obs-workspaces",
+          primary: true,
+        },
+        {
+          label: "Releases",
+          href: "https://github.com/AbstractMelon/obs-workspaces/releases",
+        },
+      ],
+    },
+    {
+      title: "Onshape Replay",
+      desc: "Turns Onshape documents into timelapse video. It walks a document's feature history, renders each step, and exports frames as MP4, GIF, or a PNG sequence, with control over camera framing and which feature types appear.",
+      tech: ["Go", "Svelte", "TypeScript", "FFmpeg", "Onshape API"],
+      img: "/assets/projects/onshape-replay-project.png",
+      imgAlt: "Onshape Replay logo and settings",
+      contain: true,
+      links: [
+        {
+          label: "Live site",
+          href: "https://onshape-replay.abstractmelon.net/",
+          primary: true,
+        },
+        {
+          label: "GitHub",
+          href: "https://github.com/AbstractMelon/onshape-replay",
+        },
       ],
     },
     {
       title: "Silk",
-      desc: "Custom mod loader designed for the game Spiderheck.",
-      tech: "C# • Doorstop • Unity",
+      desc: "A custom mod loader for Spiderheck. It handles mod discovery and loading through Doorstop so mods can hook Unity assemblies without patching the game itself.",
+      tech: ["C#", "Doorstop", "Unity"],
       img: "/assets/projects/silk-project.jpg",
-      imgAlt: "Silk Project",
+      imgAlt: "Silk mod loader running in Spiderheck",
       links: [
-        { label: "GitHub", href: "https://github.com/Abstractmelon" },
-        { label: "Live", href: "https://silk.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "Gem",
-      desc: "Linux task manager designed for servers, offering performance monitoring and resource management.",
-      tech: "Go • Linux • C",
-      img: "/assets/projects/gem-project.jpg",
-      imgAlt: "Gem Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/Abstractmelon" },
-        { label: "Live", href: "https://gem.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "Prism",
-      desc: "Linux server manager providing intuitive web-based administration for server environments.",
-      tech: "Go • Vue.js • Linux",
-      img: "/assets/projects/prism-project.jpg",
-      imgAlt: "Prism Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/Abstractmelon" },
-        { label: "Live", href: "https://prism.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "Azurite",
-      desc: "Mod hosting platform.",
-      tech: "Go • Svelte • Data Platform",
-      img: "/assets/projects/azurite-project.jpg",
-      imgAlt: "Azurite Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/Abstractmelon" },
-        { label: "Live", href: "https://azurite.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "Ladybuild",
-      desc: "Automatic Ladybird building tool.",
-      tech: "Go • Build Tools",
-      img: "/assets/projects/ladybuild-project.jpg",
-      imgAlt: "Ladybuild Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/Abstractmelon/Ladybuild" },
-        { label: "Live", href: "https://ladybuild.abstractmelon.net/" },
-      ],
-    },
-    {
-      title: "Breeze",
-      desc: "Docs generator.",
-      tech: "Go • Tooling • Documentation",
-      img: "/assets/projects/breeze-project.jpg",
-      imgAlt: "Breeze Project",
-      links: [
-        { label: "GitHub", href: "https://github.com/Abstractmelon/Breeze" },
-        { label: "Live", href: "https://breeze.abstractmelon.net/" },
+        {
+          label: "Live site",
+          href: "https://silk.abstractmelon.net/",
+          primary: true,
+        },
+        { label: "GitHub", href: "https://github.com/AbstractMelon" },
       ],
     },
   ];
 
-  const container = document.getElementById("projects-container");
+  const moreProjects = [
+    {
+      title: "AmberSearcher Suite",
+      desc: "A search engine stack: Rake crawls, Indicium indexes, Helix links, and Saffron serves the frontend.",
+      tech: "Go • Vue.js",
+      href: "https://amber.abstractmelon.net/",
+    },
+    {
+      title: "Gem",
+      desc: "A Linux task manager built for servers, focused on performance monitoring and resource management.",
+      tech: "Go • Linux • C",
+      href: "https://gem.abstractmelon.net/",
+    },
+    {
+      title: "Prism",
+      desc: "Web-based administration for Linux servers.",
+      tech: "Go • Vue.js",
+      href: "https://prism.abstractmelon.net/",
+    },
+    {
+      title: "Azurite",
+      desc: "A mod hosting platform for publishing and distributing game mods.",
+      tech: "Go • Svelte",
+      href: "https://azurite.abstractmelon.net/",
+    },
+    {
+      title: "Ladybuild",
+      desc: "Automated builds for the Ladybird browser.",
+      tech: "Go • Build tooling",
+      href: "https://github.com/AbstractMelon/Ladybuild",
+    },
+    {
+      title: "Breeze",
+      desc: "A documentation generator for Go projects.",
+      tech: "Go • Tooling",
+      href: "https://github.com/AbstractMelon/Breeze",
+    },
+  ];
 
-  projects.forEach((project) => {
-    const card = document.createElement("div");
-    card.className = "project-card";
-    card.innerHTML = `
-      <div class="project-img">
-        <img src="${project.img}" alt="${project.imgAlt}" loading="lazy" decoding="async" />
-      </div>
-      <div class="project-info">
-        <h3 class="project-title">${project.title}</h3>
-        <p class="project-desc">${project.desc}</p>
-        <div class="project-tech">${project.tech}</div>
-        ${project.links.length
-          ? `<div class="project-links">${project.links
-              .map((link) => `<a href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`)
-              .join("")}</div>`
-          : ""}
-      </div>
-    `;
-    container.appendChild(card);
-  });
+  const renderTags = (tech) =>
+    `<ul class="project-tags">${tech
+      .map((item) => `<li>${item}</li>`)
+      .join("")}</ul>`;
+
+  const renderActions = (links) =>
+    `<div class="project-actions">${links
+      .map(
+        (link) =>
+          `<a class="project-btn${link.primary ? " is-primary" : ""}" href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label}</a>`
+      )
+      .join("")}</div>`;
+
+  const projectsContainer = document.getElementById("projects-container");
+  projectsContainer.innerHTML = projects
+    .map(
+      (project) => `
+        <article class="project-row">
+          <div class="project-row-media${project.contain ? " is-contain" : ""}">
+            <img src="${project.img}" alt="${project.imgAlt}" loading="lazy" decoding="async" />
+          </div>
+          <div class="project-row-body">
+            <h3 class="project-row-title">${project.title}</h3>
+            <p class="project-row-desc">${project.desc}</p>
+            ${renderTags(project.tech)}
+            ${renderActions(project.links)}
+          </div>
+        </article>
+      `
+    )
+    .join("");
+
+  const moreContainer = document.getElementById("more-projects-container");
+  moreContainer.innerHTML = moreProjects
+    .map(
+      (project) => `
+        <a class="project-mini" href="${project.href}" target="_blank" rel="noopener noreferrer">
+          <h4>${project.title}</h4>
+          <p>${project.desc}</p>
+          <span>${project.tech}</span>
+        </a>
+      `
+    )
+    .join("");
 });
